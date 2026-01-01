@@ -52,9 +52,9 @@ function saveProjects(list){
 }
 function defaultProjects(){
   return [
-    { id: uid(), title: 'University teaching lab', img: 'assets/lab-2.jpg', desc: 'Bench systems, fume hoods, hygienic cladding.' },
-    { id: uid(), title: 'Hospital diagnostics lab', img: 'assets/lab-3.jpg', desc: 'Cleanroom panels, airflow, compliance fit-out.' },
-    { id: uid(), title: 'Research cleanroom', img: 'assets/hero-2.jpg', desc: 'ISO cleanroom cladding and turnkey build.' }
+    { id: uid(), title: 'Nsobe ', img: 'assets/lab-2.jpg', desc: 'Bench systems, fume hoods, hygienic cladding.' },
+    { id: uid(), title: 'Science lab', img: 'assets/lab-3.jpg', desc: 'Cleanroom panels, airflow, compliance fit-out.' },
+    { id: uid(), title: 'Nsobe project', img: 'assets/hero-2.jpg', desc: 'ISO cleanroom cladding and turnkey build.' }
   ];
 }
 function uid(){ return Math.random().toString(36).slice(2,9); }
