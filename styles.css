@@ -325,4 +325,43 @@ footer {
   .page-hero p { font-size: 1rem; }
   .project-grid { padding: 40px 20px; }
 }
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  /* Navbar */
+  .nav { 
+    display: none; 
+    flex-direction: column; 
+    gap: 16px; 
+    background: #fff; 
+    padding: 20px; 
+    position: absolute; 
+    top: 60px; 
+    right: 0; 
+    width: 200px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .nav.active { display: flex; }
+  .btn-primary { padding: 10px 16px; font-size: 0.9rem; }
+
+  /* Hero */
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .hero { height: auto; padding: 60px 20px; }
+
+  /* Grid */
+  .grid.cols-3 { grid-template-columns: 1fr; }
+  .grid.cols-2 { grid-template-columns: 1fr; }
+
+  /* Form */
+  form { gap: 12px; }
+  input, textarea { font-size: 1rem; }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.6rem; }
+  .hero p { font-size: 0.95rem; }
+  .btn { width: 100%; text-align: center; }
+}
+
 
