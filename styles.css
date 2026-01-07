@@ -4,9 +4,10 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: #f9f9f9;
   color: #333;
+  line-height: 1.6;
 }
 a { text-decoration: none; color: inherit; }
-h1, h2 { font-weight: 600; }
+h1, h2, h3 { font-weight: 600; margin: 0; }
 
 /* Header */
 header {
@@ -30,7 +31,7 @@ nav a {
   font-weight: 500;
   transition: color 0.3s;
 }
-nav a:hover { color: #0066cc; }
+nav a:hover, nav a.active { color: #0066cc; }
 
 /* Hero Section */
 .hero {
@@ -54,10 +55,16 @@ nav a:hover { color: #0066cc; }
   transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
+  max-width: 700px;
 }
 .hero h1 {
   font-size: 3rem;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+.hero p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 .btn {
   display: inline-block;
@@ -66,42 +73,71 @@ nav a:hover { color: #0066cc; }
   background: #0066cc;
   color: #fff;
   border-radius: 5px;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
-.btn:hover { background: #004c99; }
+.btn:hover { background: #004c99; transform: scale(1.05); }
 
-/* Projects */
-#projects {
+/* About Preview */
+.about-preview {
   padding: 80px 40px;
+  text-align: center;
   background: #fff;
 }
-#projects h2 { text-align: center; margin-bottom: 40px; }
+.about-preview p {
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Featured Projects */
+.featured-projects {
+  padding: 80px 40px;
+  background: #f1f1f1;
+}
+.featured-projects h2 { text-align: center; margin-bottom: 40px; }
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 .project-card {
-  background: #f1f1f1;
-  padding: 20px;
+  background: #fff;
   border-radius: 10px;
-  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
+}
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.project-card h3 {
+  margin: 15px;
+  font-size: 1.3rem;
+  color: #0066cc;
+}
+.project-card p {
+  margin: 0 15px 20px;
+  color: #555;
+}
+.project-card .btn {
+  margin: 0 15px 20px;
 }
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* Contact */
-#contact {
+/* Contact Preview */
+.contact-preview {
   padding: 60px 40px;
   background: #0066cc;
   color: #fff;
   text-align: center;
 }
-#contact a { color: #fff; font-weight: bold; }
+.contact-preview a { color: #fff; font-weight: bold; }
 
 /* WhatsApp Floating Button */
 .whatsapp-btn {
@@ -114,6 +150,7 @@ nav a:hover { color: #0066cc; }
   font-size: 1.5rem;
   box-shadow: 0 3px 10px rgba(0,0,0,0.3);
   transition: transform 0.3s;
+  z-index: 1000;
 }
 .whatsapp-btn:hover { transform: scale(1.1); }
 
@@ -123,4 +160,169 @@ footer {
   color: #aaa;
   text-align: center;
   padding: 20px;
+  font-size: 0.9rem;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  header { padding: 10px 20px; }
+  nav a { margin: 0 10px; }
+}
+/* Scroll Reveal */
+.project-card, .about-preview, .contact-preview {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.project-card.visible, .about-preview.visible, .contact-preview.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* WhatsApp Pulse */
+.whatsapp-btn.pulse {
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.8);
+}
+/* Hero for inner pages */
+.small-hero {
+  background: linear-gradient(to right, #0ea5a3, #3b82f6);
+  color: #fff;
+  height: 40vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 0 20px;
+}
+.small-hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+
+/* Project cards */
+.card img {
+  width: 100%; border-top-left-radius: 12px; border-top-right-radius: 12px;
+}
+.card .body { padding: 20px; }
+.card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+
+/* About Section */
+.about-section {
+  padding: 80px 40px;
+  background: #fff;
+  max-width: 1000px;
+  margin: auto;
+}
+.about-block {
+  margin-bottom: 40px;
+}
+.about-block h2 {
+  color: #0066cc;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+.about-block h2 i {
+  margin-right: 10px;
+}
+.about-block p, .about-block ul {
+  color: #555;
+  font-size: 1.1rem;
+}
+.about-block ul {
+  list-style: none;
+  padding: 0;
+}
+.about-block ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+}
+.about-block ul li::before {
+  content: "✔";
+  color: #0066cc;
+  position: absolute;
+  left: 0;
+}
+/* Projects Page Hero */
+.page-hero {
+  padding: 120px 40px 60px;
+  text-align: center;
+  background: linear-gradient(to right, #0066cc, #004c99);
+  color: #fff;
+}
+.page-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.page-hero p {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+/* Projects Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 80px 40px;
+  background: #f9f9f9;
+}
+.project-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.project-card h3 {
+  margin: 15px;
+  font-size: 1.3rem;
+  color: #0066cc;
+}
+.project-card p {
+  margin: 0 15px 20px;
+  color: #555;
+  font-size: 1rem;
+}
+.project-card .btn {
+  margin: 0 15px 20px;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Individual Project Detail Pages (optional) */
+.project-detail {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 40px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.project-detail img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.project-detail h2 {
+  color: #0066cc;
+  margin-bottom: 15px;
+}
+.project-detail p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-hero h1 { font-size: 2rem; }
+  .page-hero p { font-size: 1rem; }
+  .project-grid { padding: 40px 20px; }
+}
+
