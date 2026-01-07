@@ -1,54 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Science Lab Construction</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cladding Investments specializes in science lab construction, fit-outs, and turnkey solutions.">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cladding Investments</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-bar">
-      <a class="brand" href="#">
-        <div class="logo-image">
-          <img src="assets/logo.png" alt="Cladding Investments logo">
-        </div>
-        <div class="brand-text">
-          <strong>Cladding Investments</strong>
-          <span class="muted">Science Lab Construction</span>
-        </div>
-      </a>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-wrap">
+      <div class="brand">Cladding Investments</div>
       <nav class="nav">
-        <a href="#home" class="is-active">Home</a>
+        <a href="#home">Home</a>
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div class="header-actions">
-        <button class="btn btn-secondary" data-admin-open>Admin</button>
-      </div>
+      <a href="#contact" class="btn btn-primary">Request Quote</a>
     </div>
   </header>
 
-  <!-- Hero with auto-rotating images -->
+  <!-- Hero -->
   <section id="home" class="hero">
-    <div class="hero-slider" data-hero-slider>
-      <img src="assets/hero-1.jpg" alt="Modern science lab installation">
-      <img src="assets/hero-2.jpg" alt="Cleanroom and lab fit-out">
-      <img src="assets/hero-3.jpg" alt="Turnkey laboratory construction">
-    </div>
-    <div class="hero-overlay">
-      <div class="container hero-content">
-        <h1>Precision-built science labs</h1>
-        <p>Turnkey design, cladding, and fit-outs for research, education, and healthcare.</p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary">Request a quote</a>
-          <a href="#projects" class="btn btn-ghost">View projects</a>
-        </div>
+    <div class="hero-content">
+      <h1>Modern Labs & Kitchens Built With Precision</h1>
+      <p>Science labs, computer labs, and kitchens designed for innovation and durability.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary">Explore Services</a>
+        <a href="#contact" class="btn btn-secondary">Contact Us</a>
       </div>
     </div>
   </section>
@@ -56,359 +38,37 @@
   <!-- Services -->
   <section id="services" class="section">
     <div class="container">
-      <h2>Services</h2>
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="card-icon">🧪</div>
-          <h3>Lab construction</h3>
-          <p>Full-stack lab builds—structural, cladding, utilities, and compliance.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🏗️</div>
-          <h3>Fit-outs & cladding</h3>
-          <p>Cleanroom panels, hygienic cladding, benches, fume hoods, and storage.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">📐</div>
-          <h3>Design & compliance</h3>
-          <p>Layouts, airflow, safety, and standards for education and healthcare labs.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects (public view) -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>Featured projects</h2>
-      <p class="muted">Curated highlights—managed via the admin dashboard.</p>
-      <div class="grid grid-3" data-projects-grid>
-        <!-- Populated by script.js from localStorage -->
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="section section-alt">
-    <div class="container about">
-      <div class="about-text">
-        <h2>About Cladding Investments</h2>
-        <p>We build science labs with precision, safety, and longevity. From concept to commissioning, our team delivers turnkey solutions tailored to research, education, and healthcare environments.</p>
-        <p><strong>CEO & Founder:</strong> Innocent Chanda</p>
-        <p class="muted">Based in Lusaka, Zambia—serving institutions across the region.</p>
-      </div>
-      <div class="about-media">
-        <img src="assets/lab-1.jpg" alt="Lab interior with hygienic cladding">
+      <h2>Our Services</h2>
+      <div class="grid cols-3">
+        <div class="card"><i class="fas fa-flask"></i><h3>Science Labs</h3><p>Modern laboratory design & installation.</p></div>
+        <div class="card"><i class="fas fa-desktop"></i><h3>Computer Labs</h3><p>Complete ergonomic setups with reliable infrastructure.</p></div>
+        <div class="card"><i class="fas fa-utensils"></i><h3>Kitchens</h3><p>Durable, stylish kitchen construction & fittings.</p></div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="section">
-    <div class="container contact">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <div>
-          <p><strong>Phone:</strong> <a href="tel:+260966011997">+260966011997</a></p>
-          <p><strong>Email:</strong> <a href="mailto:info@claddinginvestments.com">info@claddinginvestments.com</a></p>
-          <p><strong>Location:</strong> Lusaka, Zambia</p>
-        </div>
-        <form class="contact-form" data-contact-form>
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required>
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required>
-          </label>
-          <label>
-            <span>Message</span>
-            <textarea name="message" rows="4" required></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit">Send inquiry</button>
-          <p class="muted" data-contact-status></p>
-        </form>
-      </div>
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>📞 Phone: <strong>0966011997</strong></p>
+      <form class="form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
     </div>
   </section>
+
+  <!-- WhatsApp Floating Icon -->
+  <a href="https://wa.me/260966011997" class="whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <div class="logo-image">
-          <img src="assets/logo.png" alt="Cladding Investments logo">
-        </div>
-        <small>© <span data-year></span> Cladding Investments</small>
-      </div>
-      <nav class="footer-nav">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+  <footer class="footer">
+    <p>&copy; 2026 Cladding Investments. All rights reserved.</p>
   </footer>
-
-  <!-- Admin modal -->
-  <div class="modal-scrim" data-modal-scrim hidden></div>
-  <div class="modal" data-admin-modal aria-hidden="true">
-    <div class="modal-header">
-      <h3>Admin login</h3>
-      <button class="icon-btn" data-admin-close>✕</button>
-    </div>
-    <div class="modal-body">
-      <form class="auth-form" data-admin-form>
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" placeholder="admin@claddinginvestments.com" required>
-        </label>
-        <label>
-          <span>Password</span>
-          <input type="password" name="password" placeholder="••••••••" required>
-        </label>
-        <button class="btn btn-primary" type="submit">Login</button>
-        <p class="muted" data-admin-status></p>
-      </form>
-      <div class="admin-dashboard" data-admin-dashboard hidden>
-        <h4>Projects manager</h4>
-        <form class="project-form" data-project-form>
-          <div class="grid grid-2">
-            <label>
-              <span>Title</span>
-              <input type="text" name="title" required>
-            </label>
-            <label>
-              <span>Image URL</span>
-              <input type="url" name="img" placeholder="assets/lab-2.jpg" required>
-            </label>
-          </div>
-          <label>
-            <span>Description</span>
-            <textarea name="desc" rows="3" required></textarea>
-          </label>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Add project</button>
-            <button class="btn btn-secondary" type="button" data-project-clear>Clear</button>
-          </div>
-        </form>
-        <div class="admin-list" data-admin-projects>
-          <!-- Admin list populated by script.js -->
-        </div>
-        <div class="admin-actions">
-          <button class="btn btn-ghost" type="button" data-admin-logout>Logout</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Science Lab Construction</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cladding Investments specializes in science lab construction, fit-outs, and turnkey solutions.">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
-</head>
-<body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-bar">
-      <a class="brand" href="#">
-        <div class="logo-image">
-          <img src="assets/logo.png" alt="Cladding Investments logo">
-        </div>
-        <div class="brand-text">
-          <strong>Cladding Investments>
-          <span class="muted">Science Lab Construction</span>
-        </div>
-      </a>
-      <nav class="nav">
-        <a href="#home" class="is-active">Home</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <button class="btn btn-secondary" data-admin-open>Admin</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero with auto-rotating images -->
-  <section id="home" class="hero">
-    <div class="hero-slider" data-hero-slider>
-      <img src="assets/hero-1.jpg" alt="Modern science lab installation">
-      <img src="assets/hero-2.jpg" alt="Cleanroom and lab fit-out">
-      <img src="assets/hero-3.jpg" alt="Turnkey laboratory construction">
-    </div>
-    <div class="hero-overlay">
-      <div class="container hero-content">
-        <h1>Precision-built science labs</h1>
-        <p>Turnkey design, cladding, and fit-outs for research, education, and healthcare.</p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary">Request a quote</a>
-          <a href="#projects" class="btn btn-ghost">View projects</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="section">
-    <div class="container">
-      <h2>Services</h2>
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="card-icon">🧪</div>
-          <h3>Lab construction</h3>
-          <p>Full-stack lab builds—structural, cladding, utilities, and compliance.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🏗️</div>
-          <h3>Fit-outs & cladding</h3>
-          <p>Cleanroom panels, hygienic cladding, benches, fume hoods, and storage.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">📐</div>
-          <h3>Design & compliance</h3>
-          <p>Layouts, airflow, safety, and standards for education and healthcare labs.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects (public view) -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>Featured projects</h2>
-      <p class="muted">Curated highlights—managed via the admin dashboard.</p>
-      <div class="grid grid-3" data-projects-grid>
-        <!-- Populated by script.js from localStorage -->
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="section section-alt">
-    <div class="container about">
-      <div class="about-text">
-        <h2>About Cladding Investments</h2>
-        <p>We build science labs with precision, safety, and longevity. From concept to commissioning, our team delivers turnkey solutions tailored to research, education, and healthcare environments.</p>
-        <p><strong>CEO & Founder:</strong> Innocent Chanda</p>
-        <p class="muted">Based in Lusaka, Zambia—serving institutions across the region.</p>
-      </div>
-      <div class="about-media">
-        <img src="assets/lab-1.jpg" alt="Lab interior with hygienic cladding">
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container contact">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <div>
-          <p><strong>Phone:</strong> <a href="tel:+260966011997">+260966011997</a></p>
-          <p><strong>Email:</strong> <a href="mailto:info@claddinginvestments.com">info@claddinginvestments.com</a></p>
-          <p><strong>Location:</strong> Lusaka, Zambia</p>
-        </div>
-        <form class="contact-form" data-contact-form>
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required>
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required>
-          </label>
-          <label>
-            <span>Message</span>
-            <textarea name="message" rows="4" required></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit">Send inquiry</button>
-          <p class="muted" data-contact-status></p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <div class="logo-image">
-          <img src="assets/logo.png" alt="Cladding Investments logo">
-        </div>
-        <small>© <span data-year></span> Cladding Investments</small>
-      </div>
-      <nav class="footer-nav">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </footer>
-
-  <!-- Admin modal -->
-  <div class="modal-scrim" data-modal-scrim hidden></div>
-  <div class="modal" data-admin-modal aria-hidden="true">
-    <div class="modal-header">
-      <h3>Admin login</h3>
-      <button class="icon-btn" data-admin-close>✕</button>
-    </div>
-    <div class="modal-body">
-      <form class="auth-form" data-admin-form>
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" placeholder="admin@claddinginvestments.com" required>
-        </label>
-        <label>
-          <span>Password</span>
-          <input type="password" name="password" placeholder="••••••••" required>
-        </label>
-        <button class="btn btn-primary" type="submit">Login</button>
-        <p class="muted" data-admin-status></p>
-      </form>
-      <div class="admin-dashboard" data-admin-dashboard hidden>
-        <h4>Projects manager</h4>
-        <form class="project-form" data-project-form>
-          <div class="grid grid-2">
-            <label>
-              <span>Title</span>
-              <input type="text" name="title" required>
-            </label>
-            <label>
-              <span>Image URL</span>
-              <input type="url" name="img" placeholder="assets/lab-2.jpg" required>
-            </label>
-          </div>
-          <label>
-            <span>Description</span>
-            <textarea name="desc" rows="3" required></textarea>
-          </label>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Add project</button>
-            <button class="btn btn-secondary" type="button" data-project-clear>Clear</button>
-          </div>
-        </form>
-        <div class="admin-list" data-admin-projects>
-          <!-- Admin list populated by script.js -->
-        </div>
-        <div class="admin-actions">
-          <button class="btn btn-ghost" type="button" data-admin-logout>Logout</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
