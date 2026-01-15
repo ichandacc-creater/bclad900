@@ -12,69 +12,64 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="logo">Cladding Investments</div>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Cladding Investments</a>
+      <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" role="navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn">Request Quote</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <img src="images/hero1.jpg" class="active" alt="Cladding Project 1">
-    <img src="images/hero2.jpg" alt="Cladding Project 2">
-    <img src="images/hero3.jpg" alt="Cladding Project 3">
-    <div class="overlay">
-      <h1>Building Excellence with Cladding Investments</h1>
-      <p>Innovative cladding solutions for education, residential, and eco projects.</p>
-      <a href="projects.html" class="btn">Explore Projects</a>
-    </div>
-  </section>
-
-  <!-- About Preview -->
-  <section class="about-preview">
-    <h2>Who We Are</h2>
-    <p>Cladding Investments delivers modern, sustainable cladding solutions across Zambia. 
-       From colleges to eco-lodges, we combine design and durability to build with excellence.</p>
-    <a href="about.html" class="btn">Learn More</a>
-  </section>
-
-  <!-- Featured Projects -->
-  <section class="featured-projects">
-    <h2>Featured Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="images/mufulira.jpg" alt="Mufulira College">
-        <h3>Mufulira College</h3>
-        <p>Modern cladding for educational infrastructure.</p>
-        <a href="projects.html" class="btn">View Project</a>
+  <main>
+    <section class="hero">
+      <div class="slides">
+        <img src="images/hero1.jpg" class="active" alt="Cladding project 1">
+        <img src="images/hero2.jpg" alt="Cladding project 2">
+        <img src="images/hero3.jpg" alt="Cladding project 3">
       </div>
-      <div class="project-card">
-        <img src="images/kansenshi.jpg" alt="Kansenshi">
-        <h3>Kansenshi</h3>
-        <p>Residential and commercial cladding excellence.</p>
-        <a href="projects.html" class="btn">View Project</a>
-      </div>
-      <div class="project-card">
-        <img src="images/nsobe.jpg" alt="Nsobe">
-        <h3>Nsobe</h3>
-        <p>Eco-friendly cladding for sustainable projects.</p>
-        <a href="projects.html" class="btn">View Project</a>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact Preview -->
-  <section class="contact-preview">
-    <h2>Get in Touch</h2>
-    <p>Email: <a href="mailto:inch.2009@yahoo.com">inch.2009@yahoo.com</a></p>
-    <p>WhatsApp: <a href="https://wa.me/260966011997">+260 966 011 997</a></p>
-    <a href="contact.html" class="btn">Contact Us</a>
-  </section>
+      <div class="overlay">
+        <div class="container">
+          <h1>Building Excellence with Cladding Investments</h1>
+          <p>Innovative cladding solutions for education, residential, and eco projects.</p>
+          <p style="margin-top:14px"><a href="projects.html" class="btn">Explore Projects</a></p>
+        </div>
+      </div>
+
+      <div class="hero-controls">
+        <button class="hero-arrow prev" aria-label="Previous slide">&#10094;</button>
+        <button class="hero-arrow next" aria-label="Next slide">&#10095;</button>
+        <div class="dots" aria-hidden="false"></div>
+      </div>
+    </section>
+
+    <section class="about-preview container" style="margin-top:20px">
+      <div class="section-card">
+        <h2>Who We Are</h2>
+        <p>Cladding Investments delivers modern, sustainable cladding solutions across Zambia. From colleges to eco-lodges, we combine design and durability to build with excellence.</p>
+        <p style="margin-top:12px"><a href="about.html" class="btn secondary">Learn More</a></p>
+      </div>
+    </section>
+
+    <section class="contact-preview container" style="margin-top:18px">
+      <div class="section-card">
+        <h2>Get in Touch</h2>
+        <p>Email: <a href="mailto:inch.2009@yahoo.com">inch.2009@yahoo.com</a></p>
+        <p>WhatsApp: <a href="https://wa.me/260966011997">+260 966 011 997</a></p>
+        <p style="margin-top:12px"><a href="contact.html" class="btn secondary">Contact Us</a></p>
+      </div>
+    </section>
+  </main>
 
   <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/260966011997" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>

@@ -12,45 +12,54 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="logo">Cladding Investments</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html" class="active">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Cladding Investments</a>
+      <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn">Request Quote</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <h1>About Us</h1>
-    <p>Building excellence through innovation and sustainability.</p>
-  </section>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>About Us</h1>
+        <p>Building excellence through innovation and sustainability.</p>
+      </div>
+    </section>
 
-  <!-- About Content -->
-  <section class="about-section">
-    <div class="about-block">
-      <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
-      <p>To deliver modern, durable, and sustainable cladding solutions that transform infrastructure across Zambia. We aim to combine design innovation with practical functionality for long-lasting impact.</p>
-    </div>
-
-    <div class="about-block">
-      <h2><i class="fas fa-eye"></i> Our Vision</h2>
-      <p>To be the leading provider of cladding solutions in the region, recognized for quality, reliability, and eco-conscious practices that support community growth and development.</p>
-    </div>
-
-    <div class="about-block">
-      <h2><i class="fas fa-handshake"></i> Our Values</h2>
-      <ul>
-        <li>Integrity — honest and transparent in all our dealings.</li>
-        <li>Innovation — embracing modern design and technology.</li>
-        <li>Sustainability — eco-friendly practices for future generations.</li>
-        <li>Excellence — delivering projects that exceed expectations.</li>
-      </ul>
-    </div>
-  </section>
+    <section class="container" style="margin-top:18px">
+      <div class="section-card">
+        <h2>Our Mission</h2>
+        <p>To deliver modern, durable, and sustainable cladding solutions that transform infrastructure across Zambia. We aim to combine design innovation with practical functionality for long-lasting impact.</p>
+      </div>
+      <div style="height:12px"></div>
+      <div class="section-card">
+        <h2>Our Vision</h2>
+        <p>To be the leading provider of cladding solutions in the region, recognized for quality, reliability, and eco-conscious practices that support community growth and development.</p>
+      </div>
+      <div style="height:12px"></div>
+      <div class="section-card">
+        <h2>Our Values</h2>
+        <ul style="margin-top:8px;color:var(--muted)">
+          <li>Integrity — honest and transparent in all our dealings.</li>
+          <li>Innovation — embracing modern design and technology.</li>
+          <li>Sustainability — eco-friendly practices for future generations.</li>
+          <li>Excellence — delivering projects that exceed expectations.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
   <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/260966011997" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>

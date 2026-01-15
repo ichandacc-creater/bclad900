@@ -12,49 +12,74 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="logo">Cladding Investments</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Cladding Investments</a>
+      <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn">Request Quote</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <h1>Contact Us</h1>
-    <p>We’d love to hear from you. Reach out today.</p>
-  </section>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you. Reach out today.</p>
+      </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <div class="contact-info">
-      <h2>Get in Touch</h2>
-      <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@claddinginvestments">info@claddinginvestments</a></p>
-      <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/260966011997">+260 966 011 997</a></p>
-      <p><i class="fas fa-map-marker-alt"></i> Address: Ndola, Zambia</p>
-    </div>
+    <section class="contact-section container" style="margin-top:18px">
+      <div class="contact-grid">
+        <div class="section-card contact-info">
+          <h2>Get in Touch</h2>
+          <p>We're available for consultations, quotes and site visits. Reach out and we'll respond within 48 hours.</p>
+          <p style="margin-top:8px"><i class="fas fa-envelope"></i> Email: <a href="mailto:inch.2009@yahoo.com">inch.2009@yahoo.com</a></p>
+          <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/260966011997">+260 966 011 997</a></p>
+          <p><i class="fas fa-map-marker-alt"></i> Address: Ndola, Zambia</p>
+          <p style="margin-top:12px"><a href="projects.html" class="btn secondary">View Our Projects</a></p>
+        </div>
 
-    <div class="contact-form">
-      <h2>Send Us a Message</h2>
-      <form action="#" method="post">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
+        <div class="section-card contact-form">
+          <h2>Send Us a Message</h2>
+          <form id="contactForm" action="#" method="post" novalidate>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/260966011997" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Cladding Investments | All Rights Reserved</p>
-  </footer>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell us about your project" required></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="btn">Send Message</button>
+            </div>
+
+            <div id="formSuccess" class="form-success hidden" role="status" aria-live="polite">
+              <strong>Thanks —</strong> your message was received. We'll reply shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <a href="https://wa.me/260966011997" class="whatsapp-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <footer>
+      <p>&copy; 2026 Cladding Investments | All Rights Reserved</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>

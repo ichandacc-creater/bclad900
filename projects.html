@@ -4,70 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects — Cladding Investments</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container nav-wrap">
-      <div class="brand">Cladding Investments</div>
-      <nav class="nav">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Cladding Investments</a>
+      <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" role="navigation">
         <a href="index.html">Home</a>
         <a href="projects.html" class="active">Projects</a>
-        <a href="index.html#services">Services</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
-      <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn">Request Quote</a>
+      </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero small-hero">
-    <div class="hero-content">
-      <h1>Our Projects</h1>
-      <p>Explore some of the science labs, computer labs, and kitchens we’ve built.</p>
-    </div>
-  </section>
-
-  <!-- Projects Grid -->
-  <section class="section">
-    <div class="container">
-      <div class="grid cols-3">
-        <div class="card">
-          <img src="images/nsobe.jpg" alt="Nsobe">
-          <div class="body">
-            <h3>Science Lab — Science Labs </h3>
-            <p>Complete laboratory installation with modern fittings and safety equipment.</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="images/kansenshi.jpg" alt="Kansenshi">
-          <div class="body">
-            <h3>Science — Kansenshi</h3>
-            <p>50‑seat computer lab with ergonomic furniture and high‑speed networking.</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="images/kansenshi2.jpg" alt="Kansenshi">
-          <div class="body">
-            <h3>Kansenshi Secondary School</h3>
-            <p>Science Lab.</p>
-          </div>
-        </div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Our Projects</h1>
+        <p>Quality cladding & construction projects — education, residential and commercial.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WhatsApp Floating Icon -->
-  <a href="https://wa.me/260966011997" class="whatsapp" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+    <section class="project-grid container" style="margin-top:18px">
+      <div class="grid">
+        <article class="project-card">
+          <img src="images/nsobe.jpg" alt="Nsobe project">
+          <div class="card-body">
+            <h3>Science Lab — Nsobe</h3>
+            <p>Complete laboratory installation with modern fittings and safety equipment.</p>
+            <p style="margin-top:10px"><a href="contact.html" class="btn secondary">Request Quote</a></p>
+          </div>
+        </article>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2026 Cladding Investments. All rights reserved.</p>
-  </footer>
+        <article class="project-card">
+          <img src="images/kansenshi.jpg" alt="Kansenshi project">
+          <div class="card-body">
+            <h3>Chemistry Kansenshi</h3>
+            <p>science Lab</p>
+            <p style="margin-top:10px"><a href="contact.html" class="btn secondary">Request Quote</a></p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/kansenshi2.jpg" alt="Kansenshi secondary">
+          <div class="card-body">
+            <h3>Secondary School — Kansenshi</h3>
+            <p>Science lab refurbishment and safety upgrades.</p>
+            <p style="margin-top:10px"><a href="contact.html" class="btn secondary">Request Quote</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <a href="https://wa.me/260966011997" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+
+    <footer>
+      <p>&copy; 2026 Cladding Investments. All rights reserved.</p>
+    </footer>
+  </main>
 </body>
 </html>
