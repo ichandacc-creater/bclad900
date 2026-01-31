@@ -53,7 +53,7 @@ p{color:var(--muted);margin-top:0.4rem}
 .hero h1{font-size:2.4rem;font-weight:900;line-height:1.02;margin-bottom:6px;background:linear-gradient(90deg,#0b3d91,#044182);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p{color:var(--muted);margin-top:8px}
 .hero .overlay{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;min-height:62vh}
-.hero .overlay .hero-card{background:rgba(0, 0, 0, 0.08);padding:34px;border-radius:18px;box-shadow:0 20px 60px rgba(11,61,145,0.04);max-width:980px;border:1px solid rgba(11,61,145,0.04);backdrop-filter:blur(6px)}
+.hero .overlay .hero-card{background:rgba(0, 0, 0, 0.08);padding:34px;border-radius:18px;box-shadow:0 20px 60px rgba(11,61,145,0.04);max-width:980px;border:1px solid rgba(11,61,145,0.04);backdrop-filter:blur(1px)}
 .hero .overlay .hero-card p{color:var(--muted)}
 .hero .hero-meta{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:10px;color:var(--muted)}
 .hero .scroll-hint{margin-top:18px;display:block;opacity:.8;color:var(--muted)}
