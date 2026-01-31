@@ -90,12 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // start
     startAutoplay();
 
-    // Quick hero popup: ensure the hero-card doesn't stay visible longer than 2s
+    // Quick hero popup: ensure the hero-card doesn't stay visible longer than 1.5s
     (function(){
       const heroCard = document.querySelector('.hero .hero-card');
       if (!heroCard) return;
-      // hide after 2000ms (2 seconds)
-      setTimeout(() => heroCard.classList.add('hidden-short'), 2000);
+      // hide after 1500ms (1.5 seconds)
+      setTimeout(() => heroCard.classList.add('hidden-short'), 1500);
     })();
   }
 
