@@ -39,62 +39,79 @@ p{color:var(--muted);margin-top:0.4rem}
 .nav-toggle{display:none;background:none;border:0;padding:6px;cursor:pointer}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);margin:4px 0;border-radius:2px}
 
-/* Buttons */
-.btn{display:inline-block;padding:10px 16px;border-radius:10px;font-weight:700;background:var(--primary);color:#fff;border:0;transition:transform .12s ease,box-shadow .12s ease}
+/* Buttons & CTA */
+.btn{display:inline-block;padding:10px 16px;border-radius:12px;font-weight:800;background:linear-gradient(90deg,var(--primary),var(--muted-accent));color:#fff;border:0;transition:transform .12s ease,box-shadow .12s ease,opacity .12s ease}
 .btn.secondary{background:transparent;color:var(--primary);border:2px solid rgba(11,61,145,0.08)}
-.btn:hover{transform:translateY(-3px);box-shadow:var(--card-shadow)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(11,61,145,0.10)}
 
-/* Hero */
-.hero, .page-hero{background:var(--bg);color:var(--text);padding:64px 0}
+/* Header shrink (applies when scrolled) */
+.site-header.scrolled{padding:10px 0;box-shadow:0 12px 40px rgba(11,61,145,0.06);backdrop-filter: blur(6px) saturate(120%)}
+
+/* Hero — glass card with animated gradient type */
+.hero, .page-hero{background:linear-gradient(180deg,#eaf1ff, #f6f9ff);color:var(--text);padding:82px 0 36px}
 .hero .container, .page-hero .container{text-align:center}
-.hero h1,.page-hero h1{font-size:2.25rem;font-weight:800;color:var(--text)}
-.hero p,.page-hero p{color:var(--muted);margin-top:8px}
+.hero h1{font-size:2.4rem;font-weight:900;line-height:1.02;margin-bottom:6px;background:linear-gradient(90deg,#0b3d91,#044182);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:8px}
+.hero .overlay{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;min-height:62vh}
+.hero .overlay .hero-card{background:rgba(255,255,255,0.72);padding:34px;border-radius:18px;box-shadow:0 20px 60px rgba(11,61,145,0.06);max-width:980px;border:1px solid rgba(11,61,145,0.06);backdrop-filter:blur(6px)}
+.hero .overlay .hero-card p{color:var(--muted)}
+.hero .hero-meta{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:10px;color:var(--muted)}
+.hero .scroll-hint{margin-top:18px;display:block;opacity:.8;color:var(--muted)}
 
 /* Slideshow inside hero */
 .hero{position:relative;overflow:hidden}
 .hero .slides{position:absolute;inset:0;height:100%;width:100%;z-index:1}
 .hero .slides img,
-.hero .slides video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.03);transition:opacity .8s ease,transform .8s ease;filter:brightness(.6)}
+.hero .slides video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity .8s ease,transform .8s ease;filter:brightness(.56)}
 .hero .slides img.active,
-.hero .slides video.active{opacity:1;transform:scale(1);filter:brightness(.7)}
-.hero .slides video{background:#000}
-.hero .overlay{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;min-height:56vh}
-.hero .overlay .hero-card{background:var(--surface);padding:36px;border-radius:var(--radius);box-shadow:var(--card-shadow);max-width:920px;transition:opacity .28s ease,transform .28s ease}
-.hero .overlay .hero-card.hidden-short{opacity:0;transform:translateY(-10px);pointer-events:none} 
+.hero .slides video.active{opacity:1;transform:scale(1);filter:brightness(.66)}
 .hero-controls{position:absolute;left:0;right:0;bottom:18px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:6}
-.hero-arrow{background:rgba(2,6,23,0.6);color:#fff;border:0;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:18px;box-shadow:0 6px 18px rgba(2,6,23,0.28)}
 .dots{display:flex;gap:8px;align-items:center}
-.dots button{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.45);border:0;cursor:pointer;padding:0}
-.dots button.active{background:var(--accent);transform:scale(1.15)}
+.dots button{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.36);border:0;cursor:pointer;padding:0}
+.dots button.active{background:var(--accent);transform:scale(1.18)}
 
 /* When there's only one slide, hide controls */
 .hero.single .hero-controls{display:none !important}
 .hero.single .dots{display:none !important}
 
-/* Project gallery thumbnails */
-.project-card .project-main{height:220px;object-fit:cover;width:100%}
-.project-card .thumbs{display:flex;gap:8px;margin-top:8px}
-.project-card .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent}
-.project-card .thumbs img.active{border-color:var(--accent)}
-.project-card .thumbs img:hover{border-color:var(--accent)}
+/* Features */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);align-items:start}
+.feature{background:linear-gradient(180deg,#fff,#fbfdff);padding:20px;border-radius:12px;text-align:center;box-shadow:var(--card-shadow);min-height:140px}
+.feature i{color:var(--primary);margin-bottom:8px}
+.feature h3{font-size:1.05rem;margin-top:8px}
+.feature p{font-size:.95rem;color:var(--muted);margin-top:8px}
 
-/* Content sections */
-main{padding:28px 0}
-.section-card{background:var(--surface);border-radius:12px;padding:18px;box-shadow:0 8px 30px rgba(16,24,40,0.04)}
+/* Featured projects preview (masonry-like) */
+.preview-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.preview-header h2{font-size:1.25rem}
+.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:12px}
+.preview-grid .project-card{overflow:hidden}
 
-/* Projects grid */
-.project-grid .grid{display:grid;gap:18px;grid-template-columns:1fr}
-.project-card{border-radius:var(--radius);overflow:hidden;background:var(--surface);box-shadow:var(--card-shadow);transition:transform .18s ease,box-shadow .18s ease}
-.project-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,24,40,0.08)}
-.project-card img{width:100%;height:220px;object-fit:cover;cursor:pointer;transition:transform .12s ease}
-.project-card img:hover{transform:scale(1.03)}
-.card-body{padding:18px}
+/* Projects grid (masonry fallback using CSS columns for organic layout) */
+.project-grid .grid{column-gap:var(--gap);column-fill:balance}
+@media (min-width:720px){.project-grid .grid{column-count:2}}
+@media (min-width:1100px){.project-grid .grid{column-count:3}}
+.project-card{display:inline-block;width:100%;margin:0 0 18px;border-radius:var(--radius);overflow:hidden;background:var(--surface);box-shadow:var(--card-shadow);transition:transform .18s ease,box-shadow .18s ease}
+.project-card img{width:100%;height:auto;display:block}
+.card-body{padding:14px}
 
 /* Decorative gallery (index) */
 .decor-gallery{margin-top:18px;margin-bottom:6px}
 .decor-grid{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
 .decor-grid .decor-img{width:160px;height:110px;object-fit:cover;border-radius:10px;opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;box-shadow:var(--card-shadow);cursor:pointer}
 .decor-grid .decor-img.visible{opacity:1;transform:translateY(0)}
+
+/* Back to top */
+.back-to-top{position:fixed;right:18px;bottom:80px;background:var(--primary);color:#fff;padding:10px;border-radius:10px;border:0;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(11,61,145,0.12);z-index:1500;opacity:0;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+
+/* Lightbox for project pages */
+.lightbox{position:fixed;inset:0;background:rgba(2,6,23,0.85);display:flex;align-items:center;justify-content:center;z-index:1600;padding:24px}
+.lightbox.hidden{display:none}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:8px;box-shadow:0 18px 40px rgba(0,0,0,0.5)}
+.lightbox .close{position:absolute;top:18px;right:18px;background:transparent;border:0;color:#fff;font-size:26px;cursor:pointer}
+
+
 
 /* Lightbox for project pages */
 .lightbox{position:fixed;inset:0;background:rgba(2,6,23,0.85);display:flex;align-items:center;justify-content:center;z-index:1600;padding:24px}

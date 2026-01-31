@@ -200,17 +200,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Scroll reveal (safe check)
-  const revealElements = document.querySelectorAll('.project-card, .about-preview, .contact-preview, .decor-img');
-  function revealOnScroll() {
-    const windowHeight = window.innerHeight;
-    revealElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < windowHeight - 100) el.classList.add('visible');
+  // Scroll & reveal: use IntersectionObserver for performance
+  const revealElements = document.querySelectorAll('.project-card, .about-preview, .contact-preview, .decor-img, .feature, .preview-grid .project-card');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
     });
-  }
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('load', revealOnScroll);
+  }, {threshold: 0.12});
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // Header shrink on scroll and back-to-top visibility
+  const header = document.querySelector('.site-header');
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    const sc = window.scrollY || window.pageYOffset;
+    if (header) {
+      if (sc > 80) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+    }
+    if (backToTop) {
+      if (sc > 400) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
+    }
+  });
+  if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
   // WhatsApp pulse (if present)
   const whatsappBtn = document.querySelector('.whatsapp-btn');
