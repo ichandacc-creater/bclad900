@@ -36,11 +36,18 @@
 
     <section class="project-grid container" style="margin-top:18px">
       <div class="grid">
-        <article class="project-card">
-          <img src="images/nsobe.jpg" alt="Nsobe project">
+        <article class="project-card" id="nsobe-project">
+          <img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe project" class="project-main">
           <div class="card-body">
             <h3>Science Lab — Nsobe</h3>
             <p>Complete laboratory installation with modern fittings and safety equipment.</p>
+            <div class="thumbs">
+              <a href="nsobe.html?img=images/Nsobe%20project%20(1).jpg"><img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe 1" data-full="images/Nsobe%20project%20(1).jpg" class="active"></a>
+              <a href="nsobe.html?img=images/Nsobe%20project%20(2).jpeg"><img src="images/Nsobe%20project%20(2).jpeg" alt="Nsobe 2" data-full="images/Nsobe%20project%20(2).jpeg"></a>
+              <a href="nsobe.html?img=images/Nsobe%20project%20(3).jpeg"><img src="images/Nsobe%20project%20(3).jpeg" alt="Nsobe 3" data-full="images/Nsobe%20project%20(3).jpeg"></a>
+              <a href="nsobe.html?img=images/Nsobe%20project%20(4).jpeg"><img src="images/Nsobe%20project%20(4).jpeg" alt="Nsobe 4" data-full="images/Nsobe%20project%20(4).jpeg"></a>
+              <a href="nsobe.html?img=images/Nsobe%20project%20(5).jpeg"><img src="images/Nsobe%20project%20(5).jpeg" alt="Nsobe 5" data-full="images/Nsobe%20project%20(5).jpeg"></a>
+            </div> 
             <p style="margin-top:10px"><a href="contact.html" class="btn secondary">Request Quote</a></p>
           </div>
         </article>
@@ -71,5 +78,11 @@
       <p>&copy; 2026 Cladding Investments. All rights reserved.</p>
     </footer>
   </main>
+
+  <!-- Lightbox (projects) -->
+  <div class="lightbox hidden" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button class="close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="Preview">
+  </div>
 </body>
 </html>

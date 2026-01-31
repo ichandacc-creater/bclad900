@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cladding Investments</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Stylesheet -->
@@ -33,16 +33,19 @@
   <main>
     <section class="hero">
       <div class="slides">
-        <img src="images/hero1.jpg" class="active" alt="Cladding project 1">
-        <img src="images/hero2.jpg" alt="Cladding project 2">
-        <img src="images/hero3.jpg" alt="Cladding project 3">
+        <video src="images/Nsobe%20project%20(1).mp4" class="active" muted playsinline loop autoplay poster="images/Nsobe%20project%20(1).jpg"></video>
       </div>
 
       <div class="overlay">
         <div class="container">
-          <h1>Building Excellence with Cladding Investments</h1>
-          <p>Innovative cladding solutions for education, residential, and eco projects.</p>
-          <p style="margin-top:14px"><a href="projects.html" class="btn">Explore Projects</a></p>
+          <div class="hero-card">
+            <h1>Building Excellence with Cladding Investments</h1>
+            <p>Innovative cladding solutions for education, residential, and eco projects.</p>
+            <p style="margin-top:14px">
+              <a href="projects.html" class="btn">Explore Projects</a>
+              <a href="contact.html" class="btn secondary" style="margin-left:8px">Request Quote</a>
+            </p>
+          </div>
         </div>
       </div>
 
@@ -53,10 +56,24 @@
       </div>
     </section>
 
+    <section class="decor-gallery container" aria-hidden="false" style="margin-top:18px">
+      <div class="decor-grid">
+        <img src="images/Nsobe%20project%20(2).jpeg" alt="Decor Nsobe 2" class="decor-img">
+        <img src="images/Nsobe%20project%20(3).jpeg" alt="Decor Nsobe 3" class="decor-img">
+        <img src="images/Nsobe%20project%20(4).jpeg" alt="Decor Nsobe 4" class="decor-img">
+        <img src="images/Nsobe%20project%20(5).jpeg" alt="Decor Nsobe 5" class="decor-img">
+      </div>
+    </section>
+
     <section class="about-preview container" style="margin-top:20px">
       <div class="section-card">
         <h2>Who We Are</h2>
-        <p>Cladding Investments delivers modern, sustainable cladding solutions across Zambia. From colleges to eco-lodges, we combine design and durability to build with excellence.</p>
+        <p>Building Zambia’s future with design, durability, and safety.
+
+From labs to lodges, we clad with excellence.
+
+Sustainable finishes, reliable fittings.
+Cladding Investments delivers modern, sustainable cladding solutions across Zambia. From colleges to eco-lodges, we combine design and durability to build with excellence.</p>
         <p style="margin-top:12px"><a href="about.html" class="btn secondary">Learn More</a></p>
       </div>
     </section>
@@ -78,6 +95,12 @@
   <footer>
     <p>&copy; 2026 Cladding Investments | All Rights Reserved</p>
   </footer>
+
+  <!-- Lightbox (used across pages) -->
+  <div class="lightbox hidden" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button class="close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="Preview">
+  </div>
 
   <!-- JavaScript -->
   <script src="script.js"></script>

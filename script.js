@@ -2,14 +2,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Hero slider (presentation-style with controls)
   const hero = document.querySelector('.hero');
-  const slideImgs = document.querySelectorAll('.hero .slides img');
+  const slides = document.querySelectorAll('.hero .slides img, .hero .slides video');
   const prevBtn = document.querySelector('.hero .hero-arrow.prev');
   const nextBtn = document.querySelector('.hero .hero-arrow.next');
   const dotsContainer = document.querySelector('.hero .dots');
 
-  if (hero && slideImgs && slideImgs.length) {
+  if (hero && slides && slides.length) {
     let current = 0;
-    const len = slideImgs.length;
+    const len = slides.length;
     let autoplayId = null;
 
     // build dots
@@ -21,13 +21,38 @@ document.addEventListener('DOMContentLoaded', () => {
       dotsContainer.appendChild(btn);
     }
     const dots = dotsContainer.querySelectorAll('button');
+    const heroControls = document.querySelector('.hero-controls');
+    if (len <= 1) {
+      if (heroControls) heroControls.style.display = 'none';
+      hero.classList.add('single');
+    } else {
+      hero.classList.remove('single');
+    }
+
+    function deactivateSlide(idx) {
+      const s = slides[idx];
+      s.classList.remove('active');
+      if (s.tagName === 'VIDEO') {
+        try { s.pause(); s.currentTime = 0; } catch (e) {}
+      }
+    }
+    function activateSlide(idx) {
+      const s = slides[idx];
+      s.classList.add('active');
+      if (s.tagName === 'VIDEO') {
+        s.muted = true;
+        s.playsInline = true;
+        s.loop = true;
+        s.play().catch(() => {});
+      }
+    }
 
     function goTo(index) {
       if (index === current) return;
-      slideImgs[current].classList.remove('active');
+      deactivateSlide(current);
       dots[current].classList.remove('active');
       current = (index + len) % len;
-      slideImgs[current].classList.add('active');
+      activateSlide(current);
       dots[current].classList.add('active');
     }
     function next() { goTo(current + 1); }
@@ -35,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // autoplay
     function startAutoplay(){
+      if (len <= 1) return; // no autoplay for single slide
       stopAutoplay();
       autoplayId = setInterval(next, 6000);
     }
@@ -55,9 +81,89 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowRight') { next(); startAutoplay(); }
     });
 
+    // initialize: ensure first slide active and play if it's a video
+    slides.forEach((s, i) => {
+      if (i !== 0) s.classList.remove('active');
+      else { s.classList.add('active'); if (s.tagName === 'VIDEO') { s.muted = true; s.playsInline = true; s.loop = true; s.play().catch(()=>{}); } }
+    });
+
     // start
     startAutoplay();
+
+    // Quick hero popup: ensure the hero-card doesn't stay visible longer than 2s
+    (function(){
+      const heroCard = document.querySelector('.hero .hero-card');
+      if (!heroCard) return;
+      // hide after 2000ms (2 seconds)
+      setTimeout(() => heroCard.classList.add('hidden-short'), 2000);
+    })();
   }
+
+  // Thumbnail gallery interactions (project pages)
+  document.querySelectorAll('.project-card .thumbs').forEach((thumbs) => {
+    const main = thumbs.closest('.project-card').querySelector('.project-main');
+    thumbs.querySelectorAll('img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        const src = e.currentTarget.dataset.full || e.currentTarget.src;
+        if (main) main.src = src;
+        thumbs.querySelectorAll('img').forEach(i => i.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+      });
+    });
+  });
+
+  // NSOBE project page: initial image and lightbox
+  (function(){
+    const nsobeMain = document.getElementById('nsobe-main');
+    const lightbox = document.querySelector('.lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (nsobeMain) {
+      const params = new URLSearchParams(window.location.search);
+      const img = params.get('img');
+      if (img) nsobeMain.src = decodeURIComponent(img);
+
+      // clicking main image opens lightbox
+      nsobeMain.addEventListener('click', () => {
+        if (lightbox && lightboxImg) { lightboxImg.src = nsobeMain.src; lightbox.classList.remove('hidden'); }
+      });
+
+      // wire thumbnails on nsobe page (if present) to change main image without navigating
+      const nsobeThumbs = document.querySelectorAll('#nsobe-page .thumbs img');
+      nsobeThumbs.forEach(t => t.addEventListener('click', (e)=>{
+        const src = e.currentTarget.dataset.full || e.currentTarget.src;
+        nsobeMain.src = src;
+        nsobeThumbs.forEach(i => i.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+      }));
+    }
+
+    // Global lightbox handlers (for decorative images and general use)
+    if (lightbox && lightboxImg) {
+      // close with ESC
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.add('hidden'); });
+      // click outside the image closes
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.add('hidden'); });
+      // close button
+      const closeBtn = document.querySelector('.lightbox .close');
+      if (closeBtn) closeBtn.addEventListener('click', () => lightbox.classList.add('hidden'));
+
+      // open lightbox for decorative images on index
+      document.querySelectorAll('.decor-img').forEach(img => {
+        img.addEventListener('click', () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.remove('hidden');
+        });
+      });
+
+      // open lightbox for main project images on projects page
+      document.querySelectorAll('.project-card > img').forEach(img => {
+        img.addEventListener('click', () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.remove('hidden');
+        });
+      });
+    }
+  })();
 
   // Accessible mobile nav toggle
   const navToggle = document.getElementById('nav-toggle');
@@ -95,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Scroll reveal (safe check)
-  const revealElements = document.querySelectorAll('.project-card, .about-preview, .contact-preview');
+  const revealElements = document.querySelectorAll('.project-card, .about-preview, .contact-preview, .decor-img');
   function revealOnScroll() {
     const windowHeight = window.innerHeight;
     revealElements.forEach(el => {

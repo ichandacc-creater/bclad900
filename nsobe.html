@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nsobe — Science Lab — Cladding Investments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Cladding Investments</a>
+      <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn">Request Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Nsobe — Science Lab</h1>
+        <p>Full project gallery and details. Click a picture to view it larger.</p>
+      </div>
+    </section>
+
+    <section class="project-grid container" style="margin-top:18px">
+      <div class="grid">
+        <article class="project-card" id="nsobe-page">
+          <img id="nsobe-main" src="images/Nsobe%20project%20(1).jpg" alt="Nsobe main" class="project-main">
+          <div class="card-body">
+            <h3>Science Lab — Nsobe</h3>
+            <p>Complete laboratory installation with modern fittings and safety equipment.</p>
+            <div class="thumbs">
+              <img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe 1" data-full="images/Nsobe%20project%20(1).jpg" class="active">
+              <img src="images/Nsobe%20project%20(2).jpeg" alt="Nsobe 2" data-full="images/Nsobe%20project%20(2).jpeg">
+              <img src="images/Nsobe%20project%20(3).jpeg" alt="Nsobe 3" data-full="images/Nsobe%20project%20(3).jpeg">
+              <img src="images/Nsobe%20project%20(4).jpeg" alt="Nsobe 4" data-full="images/Nsobe%20project%20(4).jpeg">
+              <img src="images/Nsobe%20project%20(5).jpeg" alt="Nsobe 5" data-full="images/Nsobe%20project%20(5).jpeg">
+            </div>
+
+            <p style="margin-top:12px"><a href="contact.html" class="btn secondary">Request Quote</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <a href="https://wa.me/260966011997" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+
+    <footer>
+      <p>&copy; 2026 Cladding Investments. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox hidden">
+    <button class="close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
