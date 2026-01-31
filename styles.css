@@ -167,4 +167,3 @@ footer{padding:26px 0;text-align:center;color:var(--muted);font-size:0.95rem}
 @media (min-width:1100px){
   .project-grid .grid{grid-template-columns:repeat(3,1fr)}
 }
-
