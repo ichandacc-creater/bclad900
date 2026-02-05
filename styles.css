@@ -38,7 +38,7 @@ p{color:var(--muted);margin-top:0.6rem;line-height:1.65}
 .site-nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .3s ease}
 .site-nav a:hover::after,.site-nav a.active::after{width:100%}
 .site-nav a.active,.site-nav a:hover{background:rgba(11,61,145,0.08);color:var(--primary)}
-.nav-actions{display:flex;gap:12px;align-items:center;order:-1;margin-left:0}
+.nav-actions{margin-left:auto;display:flex;gap:12px;align-items:center}
 .nav-toggle{display:none;background:none;border:0;padding:8px;cursor:pointer;transition:transform .3s ease}
 .nav-toggle:hover{transform:rotate(90deg)}
 .nav-toggle span{display:block;width:24px;height:2.5px;background:var(--text);margin:5px 0;border-radius:2px;transition:all .3s ease}
@@ -244,7 +244,7 @@ footer p{margin:8px 0}
   .decor-grid .decor-img{width:140px;height:100px}
 
   /* Make nav action buttons smaller and touch-friendly on mobile */
-  .nav-actions{display:flex;gap:8px;align-items:center;order:-1;margin-left:0}
+  .nav-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
   .nav-actions .btn{padding:6px 10px;border-radius:10px;font-size:0.85rem;box-shadow:none}
   .nav-actions .btn.secondary{padding:6px 10px;font-size:0.82rem}
   .nav-actions .btn .welcome-loader{display:none}
