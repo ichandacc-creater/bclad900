@@ -231,23 +231,25 @@ footer p{margin:8px 0}
   .preview-grid{grid-template-columns:1fr}
 
   /* Tweak hero card and heading sizing for mobile */
-  .hero .overlay .hero-card{padding:24px;border-radius:14px}
-  .hero h1{font-size:2rem}
-  .hero{padding:60px 0 30px}
+  .hero .overlay .hero-card{padding:18px;border-radius:12px}
+  .hero h1{font-size:1.9rem}
+  .hero{padding:52px 0 26px}
   
   /* Smaller hero controls on mobile */
-  .hero-arrow{width:42px;height:42px;padding:10px}
+  .hero-arrow{width:40px;height:40px;padding:8px}
   .hero-arrow.prev{left:10px}
   .hero-arrow.next{right:10px}
   
   /* Adjust decorative gallery */
-  .decor-grid .decor-img{width:150px;height:110px}
+  .decor-grid .decor-img{width:140px;height:100px}
 
   /* Make nav action buttons smaller and touch-friendly on mobile */
   .nav-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
-  .nav-actions .btn{padding:8px 12px;border-radius:10px;font-size:0.9rem;box-shadow:none}
-  .nav-actions .btn.secondary{padding:8px 10px;font-size:0.85rem}
+  .nav-actions .btn{padding:6px 10px;border-radius:10px;font-size:0.85rem;box-shadow:none}
+  .nav-actions .btn.secondary{padding:6px 10px;font-size:0.82rem}
   .nav-actions .btn .welcome-loader{display:none}
+
+  /* Hero CTAs: keep original sizing on mobile (no override) */
 }
 
 @media (min-width:1100px){
