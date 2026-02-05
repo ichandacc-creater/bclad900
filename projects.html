@@ -10,7 +10,7 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html">Cladding Investments</a>
+      <a class="logo" href="index.html"><img src="images/logo.png" alt="Cladding Investments Logo" style="height:40px;width:auto"></a>
       <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
@@ -34,13 +34,41 @@
       </div>
     </section>
 
-    <section class="project-grid container" style="margin-top:18px">
+    <!-- Project Filter Section -->
+    <section class="projects-filter-section container" style="margin-top:32px">
+      <div class="filter-header">
+        <h2>Featured Work</h2>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="education">Education</button>
+          <button class="filter-btn" data-filter="laboratory">Laboratory</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-grid container" style="margin-top:28px">
       <div class="grid">
-        <article class="project-card" id="nsobe-project">
-          <img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe project" class="project-main">
+        <article class="project-card" id="nsobe-project" data-category="education laboratory">
+          <div class="project-image-wrapper">
+            <img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe project" class="project-main">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Science Lab — Nsobe</h3>
+                <p>Complete laboratory installation</p>
+              </div>
+            </div>
+          </div>
           <div class="card-body">
-            <h3>Science Lab — Nsobe</h3>
-            <p>Complete laboratory installation with modern fittings and safety equipment.</p>
+            <div class="project-header">
+              <div>
+                <h3>Science Lab — Nsobe</h3>
+                <span class="project-category">Education & Laboratory</span>
+              </div>
+              <div class="project-stats">
+                <span class="stat"><i class="fas fa-images"></i> 5</span>
+              </div>
+            </div>
+            <p>Complete laboratory installation with modern fittings and safety equipment. State-of-the-art facilities for scientific research and education.</p>
             <div class="thumbs">
               <a href="nsobe.html?img=images/Nsobe%20project%20(1).jpg"><img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe 1" data-full="images/Nsobe%20project%20(1).jpg" class="active"></a>
               <a href="nsobe.html?img=images/Nsobe%20project%20(2).jpeg"><img src="images/Nsobe%20project%20(2).jpeg" alt="Nsobe 2" data-full="images/Nsobe%20project%20(2).jpeg"></a>
@@ -48,25 +76,66 @@
               <a href="nsobe.html?img=images/Nsobe%20project%20(4).jpeg"><img src="images/Nsobe%20project%20(4).jpeg" alt="Nsobe 4" data-full="images/Nsobe%20project%20(4).jpeg"></a>
               <a href="nsobe.html?img=images/Nsobe%20project%20(5).jpeg"><img src="images/Nsobe%20project%20(5).jpeg" alt="Nsobe 5" data-full="images/Nsobe%20project%20(5).jpeg"></a>
             </div> 
-            <p style="margin-top:10px"><a href="contact.html" class="btn secondary">Request Quote</a></p>
+            <div class="card-actions">
+              <a href="nsobe.html" class="btn">View Gallery</a>
+              <a href="contact.html" class="btn secondary">Request Quote</a>
+            </div>
           </div>
         </article>
 
-        <article class="project-card">
-          <img src="images/kansenshi.jpg" alt="Kansenshi project">
+        <article class="project-card" data-category="education laboratory">
+          <div class="project-image-wrapper">
+            <img src="images/kansenshi.jpg" alt="Kansenshi Chemistry Lab">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Chemistry Lab — Kansenshi</h3>
+                <p>Modern science facility</p>
+              </div>
+            </div>
+          </div>
           <div class="card-body">
-            <h3>Chemistry Kansenshi</h3>
-            <p>science Lab</p>
-            <p style="margin-top:10px"><a href="contact.html" class="btn secondary">Request Quote</a></p>
+            <div class="project-header">
+              <div>
+                <h3>Chemistry Lab — Kansenshi</h3>
+                <span class="project-category">Education & Laboratory</span>
+              </div>
+              <div class="project-stats">
+                <span class="stat"><i class="fas fa-check-circle"></i> Completed</span>
+              </div>
+            </div>
+            <p>Advanced chemistry laboratory with specialized equipment, ventilation systems, and safety protocols. Purpose-built for comprehensive science education.</p>
+            <div class="card-actions">
+              <a href="contact.html" class="btn">Get Details</a>
+              <a href="contact.html" class="btn secondary">Request Quote</a>
+            </div>
           </div>
         </article>
 
-        <article class="project-card">
-          <img src="images/kansenshi2.jpg" alt="Kansenshi secondary">
+        <article class="project-card" data-category="education laboratory">
+          <div class="project-image-wrapper">
+            <img src="images/kansenshi2.jpg" alt="Kansenshi Secondary School">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Science Lab — Kansenshi Secondary</h3>
+                <p>Lab refurbishment & upgrades</p>
+              </div>
+            </div>
+          </div>
           <div class="card-body">
-            <h3>Kansenshi Secondary School </h3>
-            <p>Science lab refurbishment and safety upgrades.</p>
-            <p style="margin-top:10px"><a href="contact.html" class="btn secondary">Request Quote</a></p>
+            <div class="project-header">
+              <div>
+                <h3>Kansenshi Secondary School</h3>
+                <span class="project-category">Education & Laboratory</span>
+              </div>
+              <div class="project-stats">
+                <span class="stat"><i class="fas fa-tools"></i> Refurbished</span>
+              </div>
+            </div>
+            <p>Science lab refurbishment and safety upgrades. Modernized facilities with new workstations, updated equipment, and enhanced safety standards for student learning.</p>
+            <div class="card-actions">
+              <a href="contact.html" class="btn">Get Details</a>
+              <a href="contact.html" class="btn secondary">Request Quote</a>
+            </div>
           </div>
         </article>
       </div>

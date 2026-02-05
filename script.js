@@ -212,19 +212,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }, {threshold: 0.12});
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // Header shrink on scroll and back-to-top visibility
-  const header = document.querySelector('.site-header');
-  const backToTop = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    const sc = window.scrollY || window.pageYOffset;
-    if (header) {
-      if (sc > 80) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-    }
-    if (backToTop) {
-      if (sc > 400) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
-    }
-  });
-  if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  // Project filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filterValue = btn.dataset.filter;
+        
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Filter projects
+        projectCards.forEach(card => {
+          if (filterValue === 'all' || card.dataset.category.includes(filterValue)) {
+            card.style.display = 'inline-block';
+            card.style.animation = 'fadeIn 0.4s ease';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+  revealElements.forEach(el => revealObserver.observe(el));
 
   // WhatsApp pulse (if present)
   const whatsappBtn = document.querySelector('.whatsapp-btn');
