@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="home.html"><img src="images/logo.png" alt="Cladding Investments Logo" style="height:40px;width:auto"></a>
+      <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" role="navigation">
+        <a href="home.html" class="active">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn">Request Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="slides">
+        <video src="images/Nsobe%20project%20(1).mp4" class="active" muted playsinline loop autoplay poster="images/Nsobe%20project%20(1).jpg"></video>
+      </div>
+
+      <div class="overlay">
+        <div class="container">
+          <div class="hero-card">
+            <h1>Building Excellence with Cladding Investments</h1>
+            <p>construction and rehabilitation of Natural Sciences laboratory, Computer Labs and modernized kitchen.
+Plumbing works, Electric wiring and gas liners.</p>
+            <p style="margin-top:14px">
+              <a href="projects.html" class="btn">Explore Projects</a>
+              <a href="contact.html" class="btn secondary" style="margin-left:8px">Request Quote</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-controls">
+        <button class="hero-arrow prev" aria-label="Previous slide">&#10094;</button>
+        <button class="hero-arrow next" aria-label="Next slide">&#10095;</button>
+        <div class="dots" aria-hidden="false"></div>
+      </div>
+    </section>
+
+    <section class="decor-gallery container" aria-hidden="false" style="margin-top:18px">
+      <div class="decor-grid">
+        <img src="images/Nsobe%20project%20(2).jpeg" alt="Decor Nsobe 2" class="decor-img">
+        <img src="images/Nsobe%20project%20(3).jpeg" alt="Decor Nsobe 3" class="decor-img">
+        <img src="images/Nsobe%20project%20(4).jpeg" alt="Decor Nsobe 4" class="decor-img">
+        <img src="images/Nsobe%20project%20(5).jpeg" alt="Decor Nsobe 5" class="decor-img">
+      </div>
+    </section>
+
+    <section class="features container" style="margin-top:28px">
+      <div class="features-grid">
+        <div class="feature">
+          <i class="fas fa-lightbulb fa-2x"></i>
+          <h3>Innovative Design</h3>
+          <p>Smart, efficient cladding solutions tailored to your space.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-leaf fa-2x"></i>
+          <h3>Sustainable Materials</h3>
+          <p>Durable, eco-conscious materials for long-lasting performance.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-tools fa-2x"></i>
+          <h3>Expert Installation</h3>
+          <p>Trained teams delivering safe, on-time project completion.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-preview container" style="margin-top:26px">
+      <div class="preview-header">
+        <h2>Featured Projects</h2>
+        <p><a href="projects.html" class="btn secondary">View All Projects</a></p>
+      </div>
+      <div class="preview-grid">
+        <article class="project-card">
+          <img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe project">
+          <div class="card-body">
+            <h3>Science Lab Nsobe</h3>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="images/kansenshi.jpg" alt="Kansenshi project">
+          <div class="card-body">
+            <h3>Kansenshi Secondary School Lab </h3>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="images/kansenshi2.jpg" alt="Kansenshi secondary">
+          <div class="card-body">
+            <h3>Secondary School — Kansenshi</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-preview container" style="margin-top:20px">
+      <div class="section-card">
+        <h2>Who We Are</h2>
+        <p> Cladding investment limited 
+ Your leading partners in construction and rehabilitation of Natural Sciences laboratory, Computer Labs and modernized kitchen.
+Plumbing works, Electric wiring and gas liners.<p style="margin-top:12px"><a href="about.html" class="btn secondary">Learn More</a></p>
+      </div>
+    </section>
+
+    <section class="contact-preview container" style="margin-top:18px">
+      <div class="section-card">
+        <h2>Get in Touch</h2>
+        <p>Email: <a href="mailto:inch.2009@yahoo.com">inch.2009@yahoo.com</a></p>
+        <p>WhatsApp: <a href="https://wa.me/260966011997">+260 966 011 997</a></p>
+        <p style="margin-top:12px"><a href="contact.html" class="btn secondary">Contact Us</a></p>
+      </div>
+    </section>
+  </main>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/260966011997" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Cladding Investments | All Rights Reserved</p>
+  </footer>
+
+  <!-- Lightbox (used across pages) -->
+  <div class="lightbox hidden" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button class="close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="Preview">
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -242,6 +242,12 @@ footer p{margin:8px 0}
   
   /* Adjust decorative gallery */
   .decor-grid .decor-img{width:150px;height:110px}
+
+  /* Make nav action buttons smaller and touch-friendly on mobile */
+  .nav-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .nav-actions .btn{padding:8px 12px;border-radius:10px;font-size:0.9rem;box-shadow:none}
+  .nav-actions .btn.secondary{padding:8px 10px;font-size:0.85rem}
+  .nav-actions .btn .welcome-loader{display:none}
 }
 
 @media (min-width:1100px){
