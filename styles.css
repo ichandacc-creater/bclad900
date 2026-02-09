@@ -172,8 +172,8 @@ p{color:var(--muted);margin-top:0.6rem;line-height:1.65}
 
 /* Enhanced Project Card Layout */
 .project-image-wrapper{position:relative;overflow:hidden;height:260px;background:var(--muted-bg)}
-.project-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,61,145,0.85),rgba(0,82,204,0.85));display:flex;align-items:flex-end;padding:20px;opacity:0;transition:opacity .4s ease;z-index:3;backdrop-filter:blur(4px)}
-.project-card:hover .project-overlay{opacity:1}
+.project-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,61,145,0.48),rgba(0,82,204,0.48));display:flex;align-items:flex-end;padding:12px;opacity:0;transition:opacity .3s ease;z-index:3;backdrop-filter:blur(2px)}
+.project-card:hover .project-overlay{opacity:0.95}
 .overlay-content{color:#fff;width:100%;animation:slideUp .4s ease}
 .overlay-content h3{color:#fff;margin-bottom:4px;font-size:1.1rem}
 .overlay-content p{color:rgba(255,255,255,0.9);margin:0;font-size:0.9rem}
