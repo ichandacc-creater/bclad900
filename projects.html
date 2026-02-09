@@ -48,8 +48,6 @@
         <article class="project-card" id="nsobe-project" data-category="education laboratory">
           <div class="project-image-wrapper image-carousel">
             <img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe project" class="project-main">
-            <button class="carousel-arrow carousel-prev" aria-label="Previous image" title="Previous image"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-arrow carousel-next" aria-label="Next image" title="Next image"><i class="fas fa-chevron-right"></i></button>
             <div class="carousel-indicators">
               <span class="carousel-counter"><span class="current-index">1</span> / <span class="total-images">5</span></span>
             </div>
@@ -106,7 +104,7 @@
                 <span class="stat"><i class="fas fa-check-circle"></i> Completed</span>
               </div>
             </div>
-            <p>Advanced chemistry laboratory with specialized equipment, ventilation systems, and safety protocols. Purpose-built for comprehensive science education.</p>
+            <p style="color: #999; font-size: 0.9rem; margin: 12px 0;">To be updated</p>
             <div class="card-actions">
               <a href="contact.html" class="btn">Get Details</a>
               <a href="contact.html" class="btn secondary">Request Quote</a>
@@ -135,6 +133,7 @@
               </div>
             </div>
             <p>Science lab refurbishment and safety upgrades. Modernized facilities with new workstations, updated equipment, and enhanced safety standards for student learning.</p>
+            <p style="color: #999; font-size: 0.9rem; margin: 12px 0;">To be updated</p>
             <div class="card-actions">
               <a href="contact.html" class="btn">Get Details</a>
               <a href="contact.html" class="btn secondary">Request Quote</a>
@@ -151,10 +150,17 @@
     </footer>
   </main>
 
-  <!-- Lightbox (projects) -->
-  <div class="lightbox hidden" aria-hidden="true" role="dialog" aria-label="Image preview">
-    <button class="close" aria-label="Close">&times;</button>
-    <img id="lightbox-img" src="" alt="Preview">
+  <!-- Lightbox with navigation for projects -->
+  <div class="gallery-lightbox hidden" id="projects-lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close"><i class="fas fa-times"></i></button>
+      <button class="lightbox-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <div class="lightbox-media-container">
+        <img id="projects-lightbox-img" src="" alt="Project image" class="lightbox-media">
+      </div>
+      <button class="lightbox-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+      <p class="lightbox-caption"></p>
+    </div>
   </div>
 
   <script src="script.js"></script>

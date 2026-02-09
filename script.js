@@ -323,111 +323,131 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Project carousel navigation (image navigation on project cards)
-  const carousels = document.querySelectorAll('.image-carousel');
-  carousels.forEach(carousel => {
-    const prevBtn = carousel.querySelector('.carousel-prev');
-    const nextBtn = carousel.querySelector('.carousel-next');
-    const mainImg = carousel.querySelector('.project-main');
-    const card = carousel.closest('.project-card');
-    const thumbnails = card.querySelectorAll('.thumbs a img');
-    const currentIndexSpan = carousel.querySelector('.current-index');
-    let currentIndex = 0;
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    function updateCarousel(index) {
-      if (thumbnails.length === 0) return;
+  // Projects lightbox with navigation (click image to view full, use arrows to navigate)
+  (function() {
+    const projectsLightbox = document.getElementById('projects-lightbox');
+    const lightboxImg = document.getElementById('projects-lightbox-img');
+    const lightboxClose = document.querySelector('#projects-lightbox .lightbox-close');
+    const lightboxPrev = document.querySelector('#projects-lightbox .lightbox-prev');
+    const lightboxNext = document.querySelector('#projects-lightbox .lightbox-next');
+    const lightboxCaption = document.querySelector('#projects-lightbox .lightbox-caption');
+    
+    if (!projectsLightbox) return;
+    
+    let currentProjectCard = null;
+    let currentImageIndex = 0;
+    let currentImages = [];
+    
+    // Make project main images clickable
+    document.querySelectorAll('.project-main').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentProjectCard = img.closest('.project-card');
+        if (!currentProjectCard) return;
+        
+        // Get all thumbnails from this project card
+        const thumbnails = currentProjectCard.querySelectorAll('.thumbs a:not(.video-thumb) img');
+        currentImages = Array.from(thumbnails).map(thumb => ({
+          src: thumb.getAttribute('data-full') || thumb.src,
+          alt: thumb.alt
+        }));
+        
+        if (currentImages.length === 0) return;
+        
+        // Find current image index
+        const mainSrc = img.src;
+        currentImageIndex = currentImages.findIndex(item => 
+          item.src === mainSrc || item.src.endsWith(mainSrc.split('/').pop())
+        );
+        if (currentImageIndex === -1) currentImageIndex = 0;
+        
+        // Show lightbox with current image
+        showLightboxImage(currentImageIndex);
+        projectsLightbox.classList.remove('hidden');
+        projectsLightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+    
+    function showLightboxImage(index) {
+      if (currentImages.length === 0) return;
       
       // Wrap around
-      index = (index % thumbnails.length + thumbnails.length) % thumbnails.length;
-      currentIndex = index;
+      index = (index % currentImages.length + currentImages.length) % currentImages.length;
+      currentImageIndex = index;
       
-      const thumbnail = thumbnails[index];
-      const fullImageSrc = thumbnail.getAttribute('data-full') || thumbnail.src;
+      const image = currentImages[index];
+      lightboxImg.src = image.src;
+      lightboxImg.alt = image.alt;
       
-      // Update main image with fade effect
-      mainImg.style.opacity = '0.7';
-      setTimeout(() => {
-        mainImg.src = fullImageSrc;
-        mainImg.alt = thumbnail.alt;
-        mainImg.style.opacity = '1';
-      }, 150);
-      
-      // Update active thumbnail
-      thumbnails.forEach(thumb => {
-        thumb.closest('a')?.classList.remove('active');
-      });
-      thumbnail.closest('a')?.classList.add('active');
-      
-      // Update counter
-      if (currentIndexSpan) {
-        currentIndexSpan.textContent = index + 1;
+      // Update caption with image number
+      if (lightboxCaption) {
+        lightboxCaption.textContent = `Image ${index + 1} of ${currentImages.length}`;
       }
     }
-
-    // Click handlers
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        updateCarousel(currentIndex - 1);
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        updateCarousel(currentIndex + 1);
-      });
-    }
-
-    // Keyboard navigation
-    let carouselHovered = false;
-    carousel.addEventListener('mouseenter', () => { carouselHovered = true; });
-    carousel.addEventListener('mouseleave', () => { carouselHovered = false; });
     
+    // Close lightbox
+    function closeLightbox() {
+      projectsLightbox.classList.add('hidden');
+      projectsLightbox.setAttribute('aria-hidden', 'true');
+    }
+    
+    // Navigation buttons
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showLightboxImage(currentImageIndex - 1);
+      });
+    }
+    
+    if (lightboxNext) {
+      lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showLightboxImage(currentImageIndex + 1);
+      });
+    }
+    
+    // Close button
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+    
+    // Keyboard navigation (arrow keys and escape)
     document.addEventListener('keydown', (e) => {
-      if (carouselHovered) {
-        if (e.key === 'ArrowLeft') updateCarousel(currentIndex - 1);
-        if (e.key === 'ArrowRight') updateCarousel(currentIndex + 1);
-      }
+      if (projectsLightbox.classList.contains('hidden')) return;
+      
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showLightboxImage(currentImageIndex - 1);
+      if (e.key === 'ArrowRight') showLightboxImage(currentImageIndex + 1);
     });
-
-    // Swipe support for touch devices
-    carousel.addEventListener('touchstart', (e) => {
+    
+    // Click outside to close
+    projectsLightbox.addEventListener('click', (e) => {
+      if (e.target === projectsLightbox) closeLightbox();
+    });
+    
+    // Swipe support
+    let touchStartX = 0;
+    projectsLightbox.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, false);
-
-    carousel.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, false);
-
-    function handleSwipe() {
-      const swipeThreshold = 50;
+    
+    projectsLightbox.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
       const diff = touchStartX - touchEndX;
+      const swipeThreshold = 50;
       
       if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
           // Swiped left - next image
-          updateCarousel(currentIndex + 1);
+          showLightboxImage(currentImageIndex + 1);
         } else {
           // Swiped right - previous image
-          updateCarousel(currentIndex - 1);
+          showLightboxImage(currentImageIndex - 1);
         }
       }
-    }
-
-    // Thumbnail click support
-    thumbnails.forEach((thumb, index) => {
-      thumb.closest('a').addEventListener('click', (e) => {
-        if (!thumb.closest('a').classList.contains('video-thumb')) {
-          e.preventDefault();
-          updateCarousel(index);
-        }
-      });
-    });
-  });
+    }, false);
+  })();
   const revealElements = document.querySelectorAll('.project-card, .about-preview, .contact-preview, .decor-img, .feature, .preview-grid .project-card, .gallery-item');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
