@@ -479,10 +479,10 @@ footer p{margin:8px 0}
   .site-nav{
     position:fixed;
     top:60px;
-    left:-120%;
+    left:-100%;
     width:100%;
     height:calc(100vh - 60px);
-    background:transparent;
+    background:linear-gradient(135deg,var(--primary),var(--muted-accent));
     flex-direction:column;
     padding:24px 20px;
     gap:12px;
@@ -490,17 +490,10 @@ footer p{margin:8px 0}
     transition:left 0.4s cubic-bezier(0.23,1,0.320,1);
     overflow-y:auto;
     display:flex !important;
-    box-shadow:none
-  }
-  .site-nav[aria-expanded="false"] {
-    left:-120%;
-    visibility:hidden;
-    pointer-events:none;
+    box-shadow:0 20px 60px rgba(11,61,145,0.3)
   }
   .site-nav[aria-expanded="true"] {
     left:0;
-    visibility:visible;
-    pointer-events:auto;
   }
   .site-nav a{
     padding:16px 20px;
