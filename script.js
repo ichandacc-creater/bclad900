@@ -165,24 +165,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
-  // Accessible mobile nav toggle
+  // Accessible mobile nav toggle with enhanced UX
   const navToggle = document.getElementById('nav-toggle');
   const siteNav = document.getElementById('site-nav');
   if (navToggle && siteNav) {
     navToggle.addEventListener('click', () => {
       const expanded = navToggle.getAttribute('aria-expanded') === 'true';
       navToggle.setAttribute('aria-expanded', String(!expanded));
-      siteNav.style.display = expanded ? 'none' : 'flex';
-      siteNav.style.flexDirection = 'column';
+      siteNav.setAttribute('aria-expanded', String(!expanded));
+      document.body.setAttribute('data-menu-open', String(!expanded));
     });
 
     // close menu when a nav link is clicked (mobile)
     siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       if (window.innerWidth < 720) {
         navToggle.setAttribute('aria-expanded', 'false');
-        siteNav.style.display = 'none';
+        siteNav.setAttribute('aria-expanded', 'false');
+        document.body.setAttribute('data-menu-open', 'false');
       }
     }));
+
+    // Close menu when clicking outside of it
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth < 720 && !navToggle.contains(e.target) && !siteNav.contains(e.target)) {
+        if (navToggle.getAttribute('aria-expanded') === 'true') {
+          navToggle.setAttribute('aria-expanded', 'false');
+          siteNav.setAttribute('aria-expanded', 'false');
+          document.body.setAttribute('data-menu-open', 'false');
+        }
+      }
+    });
   }
 
   // Smooth scroll for internal anchors
@@ -200,8 +212,223 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Scroll & reveal: use IntersectionObserver for performance
-  const revealElements = document.querySelectorAll('.project-card, .about-preview, .contact-preview, .decor-img, .feature, .preview-grid .project-card');
+  // Gallery functionality for nsobe.html
+  const galleryGrid = document.getElementById('gallery-grid');
+  const galleryFilterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const galleryLightbox = document.getElementById('gallery-lightbox');
+  const lightboxClose = document.querySelector('.lightbox-close');
+  const lightboxPrev = document.querySelector('.lightbox-prev');
+  const lightboxNext = document.querySelector('.lightbox-next');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxVideo = document.getElementById('lightbox-video');
+  const lightboxCaption = document.querySelector('.lightbox-caption');
+
+  if (galleryGrid) {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    let currentLightboxIndex = 0;
+
+    // Gallery filtering
+    galleryFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filterValue = btn.dataset.filter;
+        
+        // Update active button
+        galleryFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Filter gallery items
+        galleryItems.forEach(item => {
+          if (filterValue === 'all' || item.dataset.filter === filterValue) {
+            item.classList.add('visible');
+            setTimeout(() => item.style.display = 'block', 10);
+          } else {
+            item.classList.remove('visible');
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Show all items on load
+    galleryItems.forEach(item => item.classList.add('visible'));
+
+    // Gallery lightbox functionality
+    function openLightbox(index) {
+      const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+      if (visibleItems.length === 0) return;
+      
+      currentLightboxIndex = index;
+      const item = visibleItems[index];
+      const isVideo = item.dataset.filter === 'video';
+      const caption = item.querySelector('.gallery-caption').textContent;
+      
+      if (isVideo) {
+        const videoSrc = item.querySelector('video source').src;
+        lightboxImg.classList.add('hidden');
+        lightboxVideo.classList.remove('hidden');
+        lightboxVideo.src = videoSrc;
+      } else {
+        const imgSrc = item.querySelector('.gallery-img').src;
+        lightboxVideo.classList.add('hidden');
+        lightboxImg.classList.remove('hidden');
+        lightboxImg.src = imgSrc;
+      }
+      
+      lightboxCaption.textContent = caption;
+      galleryLightbox.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      galleryLightbox.classList.add('hidden');
+      lightboxVideo.pause();
+    }
+
+    function nextSlide() {
+      const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+      currentLightboxIndex = (currentLightboxIndex + 1) % visibleItems.length;
+      openLightbox(currentLightboxIndex);
+    }
+
+    function prevSlide() {
+      const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+      currentLightboxIndex = (currentLightboxIndex - 1 + visibleItems.length) % visibleItems.length;
+      openLightbox(currentLightboxIndex);
+    }
+
+    // Add click handlers to all gallery items
+    galleryItems.forEach((item, index) => {
+      item.querySelector('.gallery-btn').addEventListener('click', () => {
+        const visibleItems = Array.from(galleryItems).filter(i => i.style.display !== 'none');
+        const visibleIndex = visibleItems.indexOf(item);
+        openLightbox(visibleIndex);
+      });
+    });
+
+    // Lightbox controls
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', prevSlide);
+    if (lightboxNext) lightboxNext.addEventListener('click', nextSlide);
+    
+    // Close lightbox on background click
+    galleryLightbox.addEventListener('click', (e) => {
+      if (e.target === galleryLightbox) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (galleryLightbox.classList.contains('hidden')) return;
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'Escape') closeLightbox();
+    });
+  }
+
+  // Project carousel navigation (image navigation on project cards)
+  const carousels = document.querySelectorAll('.image-carousel');
+  carousels.forEach(carousel => {
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    const mainImg = carousel.querySelector('.project-main');
+    const card = carousel.closest('.project-card');
+    const thumbnails = card.querySelectorAll('.thumbs a img');
+    const currentIndexSpan = carousel.querySelector('.current-index');
+    let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function updateCarousel(index) {
+      if (thumbnails.length === 0) return;
+      
+      // Wrap around
+      index = (index % thumbnails.length + thumbnails.length) % thumbnails.length;
+      currentIndex = index;
+      
+      const thumbnail = thumbnails[index];
+      const fullImageSrc = thumbnail.getAttribute('data-full') || thumbnail.src;
+      
+      // Update main image with fade effect
+      mainImg.style.opacity = '0.7';
+      setTimeout(() => {
+        mainImg.src = fullImageSrc;
+        mainImg.alt = thumbnail.alt;
+        mainImg.style.opacity = '1';
+      }, 150);
+      
+      // Update active thumbnail
+      thumbnails.forEach(thumb => {
+        thumb.closest('a')?.classList.remove('active');
+      });
+      thumbnail.closest('a')?.classList.add('active');
+      
+      // Update counter
+      if (currentIndexSpan) {
+        currentIndexSpan.textContent = index + 1;
+      }
+    }
+
+    // Click handlers
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateCarousel(currentIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateCarousel(currentIndex + 1);
+      });
+    }
+
+    // Keyboard navigation
+    let carouselHovered = false;
+    carousel.addEventListener('mouseenter', () => { carouselHovered = true; });
+    carousel.addEventListener('mouseleave', () => { carouselHovered = false; });
+    
+    document.addEventListener('keydown', (e) => {
+      if (carouselHovered) {
+        if (e.key === 'ArrowLeft') updateCarousel(currentIndex - 1);
+        if (e.key === 'ArrowRight') updateCarousel(currentIndex + 1);
+      }
+    });
+
+    // Swipe support for touch devices
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swiped left - next image
+          updateCarousel(currentIndex + 1);
+        } else {
+          // Swiped right - previous image
+          updateCarousel(currentIndex - 1);
+        }
+      }
+    }
+
+    // Thumbnail click support
+    thumbnails.forEach((thumb, index) => {
+      thumb.closest('a').addEventListener('click', (e) => {
+        if (!thumb.closest('a').classList.contains('video-thumb')) {
+          e.preventDefault();
+          updateCarousel(index);
+        }
+      });
+    });
+  });
+  const revealElements = document.querySelectorAll('.project-card, .about-preview, .contact-preview, .decor-img, .feature, .preview-grid .project-card, .gallery-item');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects — Cladding Investments</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -46,8 +46,13 @@
     <section class="project-grid container" style="margin-top:28px">
       <div class="grid">
         <article class="project-card" id="nsobe-project" data-category="education laboratory">
-          <div class="project-image-wrapper">
+          <div class="project-image-wrapper image-carousel">
             <img src="images/Nsobe%20project%20(1).jpg" alt="Nsobe project" class="project-main">
+            <button class="carousel-arrow carousel-prev" aria-label="Previous image" title="Previous image"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-arrow carousel-next" aria-label="Next image" title="Next image"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-indicators">
+              <span class="carousel-counter"><span class="current-index">1</span> / <span class="total-images">5</span></span>
+            </div>
             <div class="project-overlay">
               <div class="overlay-content">
                 <h3>Science Lab — Nsobe</h3>
@@ -62,7 +67,7 @@
                 <span class="project-category">Education & Laboratory</span>
               </div>
               <div class="project-stats">
-                <span class="stat"><i class="fas fa-images"></i> 5</span>
+                <span class="stat"><i class="fas fa-images"></i> 10+</span>
               </div>
             </div>
             <p>Complete laboratory installation with modern fittings and safety equipment. State-of-the-art facilities for scientific research and education.</p>
@@ -72,6 +77,7 @@
               <a href="nsobe.html?img=images/Nsobe%20project%20(3).jpeg"><img src="images/Nsobe%20project%20(3).jpeg" alt="Nsobe 3" data-full="images/Nsobe%20project%20(3).jpeg"></a>
               <a href="nsobe.html?img=images/Nsobe%20project%20(4).jpeg"><img src="images/Nsobe%20project%20(4).jpeg" alt="Nsobe 4" data-full="images/Nsobe%20project%20(4).jpeg"></a>
               <a href="nsobe.html?img=images/Nsobe%20project%20(5).jpeg"><img src="images/Nsobe%20project%20(5).jpeg" alt="Nsobe 5" data-full="images/Nsobe%20project%20(5).jpeg"></a>
+              <a href="nsobe.html" class="video-thumb" title="View videos and more in gallery"><span class="video-badge"><i class="fas fa-play"></i> 2 Videos</span></a>
             </div> 
             <div class="card-actions">
               <a href="nsobe.html" class="btn">View Gallery</a>
