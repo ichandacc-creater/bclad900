@@ -15,25 +15,6 @@
   --card-shadow-hover: 0 16px 48px rgba(11,61,145,0.18);
 } 
 
-/* Dark theme: toggle by setting `data-theme="dark"` on the <html> element */
-[data-theme="dark"]{
-  --bg: #071026;
-  --muted-bg: #061423;
-  --surface: #0b1220;
-  --text: #e6eef8;
-  --muted: #9fb3d6;
-  --primary: #60a5fa;
-  --accent: #f59e0b;
-  --muted-accent: #3b82f6;
-  --card-shadow: 0 8px 28px rgba(2,6,23,0.6);
-  --card-shadow-hover: 0 16px 48px rgba(2,6,23,0.7);
-}
-
-/* Theme toggle button */
-.theme-toggle{background:transparent;border:2px solid rgba(11,61,145,0.06);padding:8px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin-left:8px;color:var(--text);transition:all .25s ease}
-.theme-toggle i{font-size:16px}
-.theme-toggle:hover{transform:scale(1.05);border-color:rgba(11,61,145,0.12)}
-
 /* Reset + base */
 *{box-sizing:border-box}
 html,body{height:100%;scroll-behavior:smooth}

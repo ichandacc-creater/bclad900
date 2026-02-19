@@ -492,29 +492,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => whatsappBtn.classList.toggle('pulse'), 1500);
   }
 
-  // Theme toggle: persist selection in localStorage and respect system preference
-  (function(){
-    const themeToggle = document.getElementById('theme-toggle');
-    function setTheme(mode){
-      if (!mode || mode === 'light') document.documentElement.removeAttribute('data-theme');
-      else document.documentElement.setAttribute('data-theme','dark');
-      if (themeToggle) {
-        themeToggle.setAttribute('aria-pressed', String(mode === 'dark'));
-        const ic = themeToggle.querySelector('i');
-        if (ic) ic.className = mode === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-      }
-    }
-    const stored = localStorage.getItem('theme');
-    if (stored) setTheme(stored);
-    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
-    if (themeToggle) themeToggle.addEventListener('click', () => {
-      const active = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      const next = active === 'dark' ? 'light' : 'dark';
-      setTheme(next);
-      localStorage.setItem('theme', next);
-    });
-  })();
-
   // Contact form handling (client-side only)
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
@@ -535,38 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (hasError) return;
 
-      // If form is configured to use Formspree, POST via fetch
-      const isFormspree = contactForm.dataset.formspree === 'true' && contactForm.action && contactForm.action.includes('formspree.io');
-      if (isFormspree) {
-        const fd = new FormData(contactForm);
-        fetch(contactForm.action, {
-          method: 'POST',
-          body: fd,
-          headers: { 'Accept': 'application/json' }
-        }).then(res => {
-          if (res.ok) return res.json().catch(() => ({}));
-          return res.json().then(err => Promise.reject(err));
-        }).then(() => {
-          contactForm.reset();
-          fields.forEach(f => f.classList.remove('input-error'));
-          if (formSuccess) {
-            formSuccess.classList.remove('hidden');
-            setTimeout(() => formSuccess.classList.add('hidden'), 6000);
-          }
-          const formError = document.getElementById('formError'); if (formError) { formError.classList.add('hidden'); }
-        }).catch(err => {
-          const formError = document.getElementById('formError');
-          if (formError) {
-            formError.textContent = 'Could not send message — please try again or contact via WhatsApp.';
-            formError.classList.remove('hidden');
-          } else {
-            alert('Could not send message — please try again later.');
-          }
-        });
-        return;
-      }
-
-      // fallback: simulate successful submission (no backend)
+      // simulate successful submission
       contactForm.reset();
       fields.forEach(f => f.classList.remove('input-error'));
       if (formSuccess) {

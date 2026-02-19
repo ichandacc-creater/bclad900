@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Cladding Investments</title>
-  <meta name="description" content="Contact Cladding Investments for quotes, consultations and site visits — Ndola, Zambia.">
-  <meta name="theme-color" content="#0b3d91">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
@@ -16,11 +14,10 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="home.html"><img loading="lazy" src="images/logo.png" alt="Cladding Investments Logo" style="height:40px;width:auto"></a>
+      <a class="logo" href="home.html"><img src="images/logo.png" alt="Cladding Investments Logo" style="height:40px;width:auto"></a>
       <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false"><i class="fas fa-moon"></i></button>
       <nav class="site-nav" id="site-nav" role="navigation">
         <a href="home.html">Home</a>
         <a href="projects.html">Projects</a>
@@ -51,8 +48,7 @@
 
         <div class="section-card contact-form">
           <h2>Send Us a Message</h2>
-          <!-- To enable real email delivery replace "yourFormId" with your Formspree form ID -->
-          <form id="contactForm" action="https://formspree.io/f/yourFormId" method="post" data-formspree="true" novalidate>
+          <form id="contactForm" action="#" method="post" novalidate>
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Your name" required>
 
@@ -62,9 +58,6 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="6" placeholder="Tell us about your project" required></textarea>
 
-            <input type="hidden" name="_subject" value="New contact from website">
-            <input type="hidden" name="_language" value="en">
-
             <div class="form-actions">
               <button type="submit" class="btn">Send Message</button>
             </div>
@@ -72,7 +65,6 @@
             <div id="formSuccess" class="form-success hidden" role="status" aria-live="polite">
               <strong>Thanks —</strong> your message was received. We'll reply shortly.
             </div>
-            <div id="formError" class="form-error hidden" role="alert" aria-live="assertive"></div>
           </form>
         </div>
       </div>
@@ -85,6 +77,6 @@
     </footer>
   </main>
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
