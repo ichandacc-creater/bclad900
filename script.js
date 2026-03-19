@@ -99,16 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
   }
 
-  // Thumbnail gallery interactions (project pages)
-  document.querySelectorAll('.project-card .thumbs').forEach((thumbs) => {
-    const main = thumbs.closest('.project-card').querySelector('.project-main');
-    thumbs.querySelectorAll('img').forEach(img => {
-      img.addEventListener('click', (e) => {
-        const src = e.currentTarget.dataset.full || e.currentTarget.src;
-        if (main) main.src = src;
-        thumbs.querySelectorAll('img').forEach(i => i.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-      });
+  // Thumbnail gallery interactions (project pages) - now opens lightbox instead of just changing main image
+  document.querySelectorAll('.project-card .thumbs a:not(.video-thumb)').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent navigation to nsobe.html
+      const img = link.querySelector('img');
+      if (img) {
+        const projectCard = link.closest('.project-card');
+        const fullSrc = img.getAttribute('data-full') || img.src;
+        // Trigger the lightbox opening logic
+        const event = new CustomEvent('thumbnailClick', { detail: { projectCard, src: fullSrc } });
+        document.dispatchEvent(event);
+      }
     });
   });
 
@@ -165,36 +167,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
-  // Accessible mobile nav toggle with enhanced UX
+  // Mobile navigation toggle with improved reliability
   const navToggle = document.getElementById('nav-toggle');
   const siteNav = document.getElementById('site-nav');
+  const mobileOverlay = document.createElement('div');
+  mobileOverlay.className = 'mobile-overlay';
+  document.body.appendChild(mobileOverlay);
+
   if (navToggle && siteNav) {
     navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      siteNav.setAttribute('aria-expanded', String(!expanded));
-      document.body.setAttribute('data-menu-open', String(!expanded));
+      const isOpen = siteNav.classList.contains('mobile-open');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
     });
 
-    // close menu when a nav link is clicked (mobile)
+    // Close menu when a nav link is clicked (mobile)
     siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      if (window.innerWidth < 720) {
-        navToggle.setAttribute('aria-expanded', 'false');
-        siteNav.setAttribute('aria-expanded', 'false');
-        document.body.setAttribute('data-menu-open', 'false');
+      if (window.innerWidth < 769) {
+        closeMobileMenu();
       }
     }));
 
-    // Close menu when clicking outside of it
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth < 720 && !navToggle.contains(e.target) && !siteNav.contains(e.target)) {
-        if (navToggle.getAttribute('aria-expanded') === 'true') {
-          navToggle.setAttribute('aria-expanded', 'false');
-          siteNav.setAttribute('aria-expanded', 'false');
-          document.body.setAttribute('data-menu-open', 'false');
-        }
+    // Close menu when clicking overlay
+    mobileOverlay.addEventListener('click', closeMobileMenu);
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && siteNav.classList.contains('mobile-open')) {
+        closeMobileMenu();
       }
     });
+  }
+
+  function openMobileMenu() {
+    siteNav.classList.add('mobile-open');
+    navToggle.classList.add('active');
+    mobileOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  function closeMobileMenu() {
+    siteNav.classList.remove('mobile-open');
+    navToggle.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
   }
 
   // Smooth scroll for internal anchors
@@ -343,31 +362,40 @@ document.addEventListener('DOMContentLoaded', () => {
       img.style.cursor = 'pointer';
       img.addEventListener('click', (e) => {
         e.preventDefault();
-        currentProjectCard = img.closest('.project-card');
-        if (!currentProjectCard) return;
-        
-        // Get all thumbnails from this project card
-        const thumbnails = currentProjectCard.querySelectorAll('.thumbs a:not(.video-thumb) img');
-        currentImages = Array.from(thumbnails).map(thumb => ({
-          src: thumb.getAttribute('data-full') || thumb.src,
-          alt: thumb.alt
-        }));
-        
-        if (currentImages.length === 0) return;
-        
-        // Find current image index
-        const mainSrc = img.src;
-        currentImageIndex = currentImages.findIndex(item => 
-          item.src === mainSrc || item.src.endsWith(mainSrc.split('/').pop())
-        );
-        if (currentImageIndex === -1) currentImageIndex = 0;
-        
-        // Show lightbox with current image
-        showLightboxImage(currentImageIndex);
-        projectsLightbox.classList.remove('hidden');
-        projectsLightbox.setAttribute('aria-hidden', 'false');
+        openProjectLightbox(img.closest('.project-card'), img.src);
       });
     });
+
+    // Listen for thumbnail clicks
+    document.addEventListener('thumbnailClick', (e) => {
+      const { projectCard, src } = e.detail;
+      openProjectLightbox(projectCard, src);
+    });
+
+    function openProjectLightbox(projectCard, clickedSrc) {
+      currentProjectCard = projectCard;
+      if (!currentProjectCard) return;
+      
+      // Get all thumbnails from this project card
+      const thumbnails = currentProjectCard.querySelectorAll('.thumbs a:not(.video-thumb) img');
+      currentImages = Array.from(thumbnails).map(thumb => ({
+        src: thumb.getAttribute('data-full') || thumb.src,
+        alt: thumb.alt
+      }));
+      
+      if (currentImages.length === 0) return;
+      
+      // Find current image index
+      currentImageIndex = currentImages.findIndex(item => 
+        item.src === clickedSrc || item.src.endsWith(clickedSrc.split('/').pop())
+      );
+      if (currentImageIndex === -1) currentImageIndex = 0;
+      
+      // Show lightbox with current image
+      showLightboxImage(currentImageIndex);
+      projectsLightbox.classList.remove('hidden');
+      projectsLightbox.setAttribute('aria-hidden', 'false');
+    }
     
     function showLightboxImage(index) {
       if (currentImages.length === 0) return;
