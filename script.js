@@ -521,4 +521,92 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 3D Mouse Tracking Effects
+  const cards = document.querySelectorAll('.feature, .project-card, .section-card');
+  const hero = document.querySelector('.hero');
+
+  function handleMouseMove(e) {
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 12;
+    const rotateY = (centerX - x) / 12;
+    const scale = 1.05;
+
+    this.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+    this.style.boxShadow = `0 25px 60px rgba(0, 212, 255, 0.25)`;
+  }
+
+  function handleMouseLeave() {
+    this.style.transform = '';
+    this.style.boxShadow = '';
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseleave', handleMouseLeave);
+  });
+
+  // Hero 3D parallax effect with enhanced particles
+  if (hero) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const moveX = (x - centerX) / 60;
+      const moveY = (y - centerY) / 60;
+
+      const cubes = hero.querySelectorAll('.floating-cube');
+      const particles = hero.querySelectorAll('.particle');
+
+      cubes.forEach((cube, index) => {
+        const speed = (index + 1) * 0.8;
+        cube.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px) rotateY(${moveX * 0.5}deg)`;
+      });
+
+      particles.forEach((particle, index) => {
+        const speed = (index + 1) * 0.3;
+        particle.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px) scale(${1 + Math.abs(moveX) * 0.01})`;
+        particle.style.opacity = 0.5 + Math.abs(moveX) * 0.01;
+      });
+    });
+
+    hero.addEventListener('mouseleave', () => {
+      const cubes = hero.querySelectorAll('.floating-cube');
+      const particles = hero.querySelectorAll('.particle');
+
+      cubes.forEach(cube => {
+        cube.style.transform = '';
+      });
+
+      particles.forEach(particle => {
+        particle.style.transform = '';
+        particle.style.opacity = '';
+      });
+    });
+  }
+
+  // FAQ Accordion functionality
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const accordionItem = header.parentElement;
+      const isActive = accordionItem.classList.contains('active');
+
+      // Close all accordion items
+      document.querySelectorAll('.accordion-item').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        accordionItem.classList.add('active');
+      }
+    });
+  });
 });
