@@ -174,6 +174,23 @@ document.addEventListener('DOMContentLoaded', () => {
   mobileOverlay.className = 'mobile-overlay';
   document.body.appendChild(mobileOverlay);
 
+  // Show/hide nav toggle based on screen size
+  function updateNavToggleVisibility() {
+    if (navToggle) {
+      if (window.innerWidth < 1025) {
+        navToggle.style.display = 'flex';
+      } else {
+        navToggle.style.display = 'none';
+      }
+    }
+  }
+
+  // Initial check
+  updateNavToggleVisibility();
+
+  // Update on resize
+  window.addEventListener('resize', updateNavToggleVisibility);
+
   if (navToggle && siteNav) {
     navToggle.addEventListener('click', () => {
       const isOpen = siteNav.classList.contains('mobile-open');
@@ -186,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close menu when a nav link is clicked (mobile)
     siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      if (window.innerWidth < 769) {
+      if (window.innerWidth < 1025) {
         closeMobileMenu();
       }
     }));
