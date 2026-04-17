@@ -1045,6 +1045,7 @@ footer p{margin:10px 0;text-shadow:0 1px 5px rgba(0, 0, 0, 0.2)}
 
   /* Mobile nav toggle button */
   .nav-toggle{
+    display:flex;
     flex-direction:column;
     gap:4px;
     background:rgba(255, 255, 255, 0.1);
@@ -1573,5 +1574,12 @@ main {
   
   .ceo-info h3 {
     font-size: 1.2rem;
+  }
+}
+
+/* Mobile adjustments for Core Services */
+@media (max-width: 719px) {
+  .core-services .section-header h2 {
+    font-size: 1.8rem;
   }
 }
