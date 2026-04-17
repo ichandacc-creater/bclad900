@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Cladding Investments</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body class="profile-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="home.html"><img src="images/logo.png" alt="Cladding Investments Logo" style="height:130px;width:auto"></a>
+      <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" role="navigation">
+        <a href="home.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you. Reach out today.</p>
+      </div>
+    </section>
+
+    <section class="contact-section container" style="margin-top:18px">
+      <div class="contact-grid">
+        <div class="section-card contact-info">
+          <h2>Get in Touch</h2>
+          <p>We're available for consultations, quotes and site visits. Reach out and we'll respond within 48 hours.</p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:inch.2009@yahoo.com">inch.2009@yahoo.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-whatsapp"></i>
+              <div>
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/260966011997">+260 966 011 997</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong>Address</strong>
+                <span>Ndola, Zambia</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <strong>Business Hours</strong>
+                <span>Mon-Fri: 8AM-6PM<br>Sat: 9AM-2PM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-areas">
+            <h3>Service Areas</h3>
+            <ul>
+              <li>Ndola & Copperbelt Province</li>
+              <li>Lusaka & Central Province</li>
+              <li>Kitwe & Mining Areas</li>
+              <li>Throughout Zambia</li>
+            </ul>
+          </div>
+
+          <div class="company-profile">
+            <h3>Company Profile</h3>
+            <p>Download our detailed company profile to learn more about our services, experience, and capabilities.</p>
+            <a href="images/cladding Investments Company profile.pdf" download class="btn secondary">Download Company Profile</a>
+          </div>
+
+          <p style="margin-top:20px"><a href="projects.html" class="btn secondary">View Our Projects</a></p>
+        </div>
+
+        <div class="section-card contact-form">
+          <h2>Send Us a Message</h2>
+          <form id="contactForm" action="#" method="post" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input id="name" name="name" type="text" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="phone" type="tel" placeholder="+260 XXX XXX XXX">
+              </div>
+              <div class="form-group">
+                <label for="service">Service Interested In</label>
+                <select id="service" name="service">
+                  <option value="">Select a service</option>
+                  <option value="laboratory">Laboratory Construction</option>
+                  <option value="kitchen">Kitchen Modernization</option>
+                  <option value="electrical">Electrical & Plumbing</option>
+                  <option value="cladding">Cladding Solutions</option>
+                  <option value="consultation">Project Consultation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Project Subject *</label>
+              <input id="subject" name="subject" type="text" placeholder="Brief project description" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Project Details *</label>
+              <textarea id="message" name="message" rows="6" placeholder="Please provide details about your project, timeline, budget, and any specific requirements..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="newsletter" id="newsletter">
+                <span class="checkmark"></span>
+                Subscribe to our newsletter for project updates and industry insights
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn">Send Message</button>
+              <p class="form-note">* Required fields. We'll respond within 48 hours.</p>
+            </div>
+
+            <div id="formSuccess" class="form-success hidden" role="status" aria-live="polite">
+              <strong>Thanks —</strong> your message was received. We'll reply shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <a href="https://wa.me/260966011997" class="whatsapp-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <footer>
+      <p>&copy; 2026 Cladding Investments | All Rights Reserved</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
