@@ -1581,4 +1581,7 @@ main {
   .core-services .section-header h2 {
     font-size: 1.8rem;
   }
+  .service-panel h3 {
+    font-size: 1.2rem;
+  }
 }
