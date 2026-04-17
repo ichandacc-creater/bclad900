@@ -788,7 +788,7 @@ body.profile-page .cta-card p{color:rgba(255,255,255,0.92)}
 .phone-illustration{width:100%;height:100%;max-width:320px;background:linear-gradient(135deg,#ed1c24,#d20f1c);border-radius:32px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(237,28,36,0.18);position:relative}
 .phone-illustration i{font-size:5rem;color:#ffffff;text-shadow:0 15px 40px rgba(0,0,0,0.2)}
 
-@media (max-width:980px){.profile-hero{padding:80px 0 60px}.profile-hero h1{font-size:3.3rem}.profile-overview{grid-template-columns:1fr}.service-panel{grid-template-columns:1fr;min-height:auto}.service-image{width:100%;height:220px}.contact-details-grid{grid-template-columns:1fr}.why-copy{padding:32px 24px}}
+@media (max-width:980px){.profile-hero{padding:80px 0 60px}.profile-hero h1{font-size:3.3rem}.profile-overview{grid-template-columns:1fr}.service-panel{grid-template-columns:1fr;min-height:auto}.service-image{width:100%;height:220px}.slideshow-container{height:220px}.contact-details-grid{grid-template-columns:1fr}.why-copy{padding:32px 24px}}
 @media (max-width:640px){.profile-hero{padding:64px 0 48px}.profile-hero h1{font-size:2.6rem}.overview-brand,.overview-copy .section-card{padding:24px}.value-card{padding:24px}.why-copy{padding:28px 18px}.hero-actions{flex-direction:column;align-items:start}.profile-overview{gap:20px}}
 
 
