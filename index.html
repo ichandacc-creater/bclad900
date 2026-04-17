@@ -8,9 +8,9 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
-<body>
+<body class="profile-page">
   <!-- Welcome Splash Screen -->
   <div id="welcome-splash" class="welcome-splash">
     <div class="welcome-content">
@@ -23,7 +23,7 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="home.html"><img src="images/logo.png" alt="Cladding Investments Logo" style="height:40px;width:auto"></a>
+      <a class="logo" href="home.html"><img src="images/logo.png" alt="Cladding Investments Logo" style="height:130px;width:auto"></a>
       <button id="nav-toggle" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
@@ -256,8 +256,13 @@ Plumbing works, Electric wiring and gas liners.<p style="margin-top:12px"><a hre
   </div>
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
-</body>
+  <script src="script.js?v=2"></script>  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        window.location.replace('home.html');
+      }, 2800);
+    });
+  </script></body>
 </html>
 
 

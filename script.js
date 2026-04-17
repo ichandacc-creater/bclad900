@@ -637,20 +637,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // FAQ Accordion functionality
-  const accordionHeaders = document.querySelectorAll('.accordion-header');
-  accordionHeaders.forEach(header => {
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  accordionItems.forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    const content = item.querySelector('.accordion-content');
+    if (!header || !content) return;
+    header.setAttribute('type', 'button');
     header.addEventListener('click', () => {
-      const accordionItem = header.parentElement;
-      const isActive = accordionItem.classList.contains('active');
-
-      // Close all accordion items
-      document.querySelectorAll('.accordion-item').forEach(item => {
-        item.classList.remove('active');
+      const isActive = item.classList.contains('active');
+      accordionItems.forEach(other => {
+        const otherContent = other.querySelector('.accordion-content');
+        other.classList.remove('active');
+        if (otherContent) {
+          otherContent.style.maxHeight = null;
+        }
       });
-
-      // Open clicked item if it wasn't active
       if (!isActive) {
-        accordionItem.classList.add('active');
+        item.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
       }
     });
   });
